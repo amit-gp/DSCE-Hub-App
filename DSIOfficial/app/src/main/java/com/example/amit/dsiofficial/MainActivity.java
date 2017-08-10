@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView messageTextView;
     private ArrayList<MessageNotification> messageNotifications;
 
+
     //Creating Views
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
