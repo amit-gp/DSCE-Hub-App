@@ -28,6 +28,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         MessageNotification notification = messageNotifications.get(position);
+        //String notificationMessageHint = notification.getNotificationTitle().substring(0, 25) + "...";
         holder.messageTitleTextView.setText(notification.getNotificationTitle());
         holder.messageBodyTextView.setText(notification.getGetNotificationBody());
     }

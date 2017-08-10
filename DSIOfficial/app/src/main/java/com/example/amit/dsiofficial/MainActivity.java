@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     //private StringRequest stringRequest;
     private JsonArrayRequest jsonArrayRequest;
     private RequestQueue requestQueue;
-    private String url = "http://192.168.0.138:4000/collegeNotification";
+    private String url = "http://192.168.43.244:4000/collegeNotification";
     private TextView messageTextView;
     private ArrayList<MessageNotification> messageNotifications;
 
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Log.i("ALERT !!", "STARTED !!!!!");
         //Initializing Views
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                messageTextView.setText(error.toString());
+                Log.i("ALERT ERROR!!", error.toString());
             }
         });
 
