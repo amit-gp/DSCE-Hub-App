@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">DSI Official</string>
     <string name="URL">http://192.168.0.103:4000/collegeNotification</string>
-
+    <string name="refresh">Refresh</string>
 </resources>

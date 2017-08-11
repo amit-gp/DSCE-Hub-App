@@ -1,11 +1,14 @@
 package com.example.amit.dsiofficial;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
+    private LinearLayout mainLinearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
     {
         //Showing a progress dialog
         final ProgressDialog loading = ProgressDialog.show(this,"Loading Data", "Please wait...",false,false);
-
         requestQueue = VolleySingleton.getInstance(this.getApplicationContext()).getRequestQueue(this.getApplicationContext());
 
         jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
@@ -68,11 +71,27 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                loading.dismiss();
+                addRefreshGui();
                 Log.i("ALERT ERROR!!", error.toString());
             }
         });
 
         requestQueue.add(jsonArrayRequest);
+    }
+
+    private void addRefreshGui()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Could not connect to Database.")
+                .setCancelable(false)
+                .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        sendAndPrintResponse();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     private void parseJsonArrayResponse(JSONArray jsonArray)
