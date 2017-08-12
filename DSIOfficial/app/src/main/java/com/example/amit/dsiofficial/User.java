@@ -11,7 +11,15 @@ public class User {
     private static String USN;
     private static String Email;
     private static String phoneNum;
+    private static Boolean isLoggedin = false;
 
+    public static Boolean getIsLoggedin() {
+        return isLoggedin;
+    }
+
+    public static void setIsLoggedin(Boolean isLoggedin) {
+        User.isLoggedin = isLoggedin;
+    }
 
     public static String getUserName() {
         return userName;

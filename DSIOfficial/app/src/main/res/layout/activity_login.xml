@@ -79,23 +79,14 @@
         android:paddingRight="60dp"
         android:orientation="vertical"
         android:gravity="bottom"
-        android:layout_marginBottom="20dp">
-        <TextView
-            android:id="@+id/forgotPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Forgot Password ?"
-            android:textColor="#ffff"
-            android:letterSpacing="0.1"
-            android:paddingBottom="15dp"
-            />
+        android:layout_marginBottom="5dp">
+
         <TextView
             android:id="@+id/lin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#f11411a1"
-            android:text="Login"
+            android:text="Log In"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             android:gravity="center"
@@ -105,12 +96,23 @@
             android:letterSpacing="0.2"/>
 
         <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Forgot Password ?"
+            android:textColor="#000"
+            android:letterSpacing="0.1"
+            android:paddingBottom="15dp"
+            />
+
+        <TextView
             android:id="@+id/sup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Create Account ? Signup"
-            android:textColor="#ffffz"
+            android:textColor="#000"
             android:letterSpacing="0.1"/>
     </LinearLayout>
     <LinearLayout
@@ -119,7 +121,7 @@
         android:gravity="center"
         android:layout_marginBottom="400dp"
         android:weightSum="1"
-        android:paddingTop="10dp">
+        android:paddingTop="40dp">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -131,10 +133,10 @@
             android:src="@drawable/dsi_logo" />
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingRight="20dp"
-            android:paddingTop="20dp"
+            android:paddingTop="30dp"
             >
 
             <TextView

@@ -137,6 +137,7 @@ public class SignupActivity extends Activity {
             User.setUserName(response.getString("Name"));
             Toast.makeText(this, response.getString("Email"), Toast.LENGTH_LONG).show();
             Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+            User.setIsLoggedin(true);
             startActivity(intent);
             finish();
 

@@ -62,6 +62,7 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View view) {
                 //Implement forgot password
+                Log.i("ALERT !!", "forgot password !");
             }
         });
 
@@ -142,6 +143,7 @@ public class LoginActivity extends Activity {
             User.setPhoneNum(response.getString("ContactNumber"));
             User.setUserName(response.getString("Name"));
             Toast.makeText(this, response.getString("Email"), Toast.LENGTH_LONG).show();
+            User.setIsLoggedin(true);
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -151,6 +153,6 @@ public class LoginActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
+        super.onBackPressed();
     }
 }
