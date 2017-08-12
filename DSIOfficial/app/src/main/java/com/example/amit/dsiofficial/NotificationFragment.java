@@ -50,8 +50,7 @@ public class NotificationFragment extends Fragment {
     private ArrayList<MessageNotification> messageNotifications;
     private JsonArrayRequest jsonArrayRequest;
     private RequestQueue requestQueue;
-    private String url = "http://192.168.0.102:4000/collegeNotification";
-
+    String notificationURL = UrlStrings.notificationUrl;
     private OnFragmentInteractionListener mListener;
 
     public NotificationFragment() {
@@ -107,7 +106,7 @@ public class NotificationFragment extends Fragment {
         final ProgressDialog loading = ProgressDialog.show(this.getContext(),"Loading Data", "Please wait...",false,false);
         requestQueue = VolleySingleton.getInstance(this.getContext()).getRequestQueue(this.getContext());
 
-        jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+        jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, notificationURL, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 Log.i("ALERT !!", response.toString());
