@@ -1,7 +1,9 @@
 package com.example.amit.dsiofficial;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +33,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
         //String notificationMessageHint = notification.getNotificationTitle().substring(0, 25) + "...";
         holder.messageTitleTextView.setText(notification.getNotificationTitle());
         holder.messageBodyTextView.setText(notification.getGetNotificationBody());
+
     }
 
     @Override
@@ -54,6 +57,16 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
             super(view);
             messageTitleTextView = (TextView) view.findViewById(R.id.messageTitleTextView);
             messageBodyTextView = (TextView) view.findViewById(R.id.messageBodyTextView);
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Log.i("ALERT !!", "View " + messageTitleTextView.getText() +" Clicked !!");
+                    Intent intent = new Intent();
+
+                }
+            });
         }
     }
 }
