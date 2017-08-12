@@ -1,42 +1,44 @@
 package com.example.amit.dsiofficial;
 
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.LinearLayout;
+import android.view.MenuItem;
 import android.widget.TextView;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     //private StringRequest stringRequest;
-    private JsonArrayRequest jsonArrayRequest;
-    private RequestQueue requestQueue;
-    private String url = "http://192.168.43.244:4000/collegeNotification";
     private TextView messageTextView;
-    private ArrayList<MessageNotification> messageNotifications;
 
 
-    //Creating Views
-    private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView.Adapter adapter;
-    private LinearLayout mainLinearLayout;
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    Log.i("ALERT !!", "HOME CLICKED");
+                    fragmentTransaction.replace(R.id.notificationFrame, new NotificationFragment()).commit();
+                    return true;
+                case R.id.navigation_dashboard:
+                    Log.i("ALERT !!", "dash CLICKED");
+                    fragmentTransaction.replace(R.id.notificationFrame, new BookFragment()).commit();
+                    return true;
+                case R.id.navigation_notifications:
+                    return true;
+            }
+            return false;
+        }
+
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,74 +46,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Log.i("ALERT !!", "STARTED !!!!!");
-        //Initializing Views
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        messageNotifications = new ArrayList<>();
-        //messageTextView = (TextView) findViewById(R.id.messageContenTextView);
-        sendAndPrintResponse();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.notificationFrame, new NotificationFragment()).commit();
+
     }
 
-    private void sendAndPrintResponse()
-    {
-        //Showing a progress dialog
-        final ProgressDialog loading = ProgressDialog.show(this,"Loading Data", "Please wait...",false,false);
-        requestQueue = VolleySingleton.getInstance(this.getApplicationContext()).getRequestQueue(this.getApplicationContext());
-
-        jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                Log.i("ALERT !!", response.toString());
-                loading.dismiss();
-                parseJsonArrayResponse(response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                loading.dismiss();
-                addRefreshGui();
-                Log.i("ALERT ERROR!!", error.toString());
-            }
-        });
-
-        requestQueue.add(jsonArrayRequest);
-    }
-
-    private void addRefreshGui()
-    {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Could not connect to Database.")
-                .setCancelable(false)
-                .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        sendAndPrintResponse();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
-
-    private void parseJsonArrayResponse(JSONArray jsonArray)
-    {
-        for (int i = 0; i < jsonArray.length(); i++)
-        {
-            MessageNotification messageNotification = new MessageNotification();
-            JSONObject jsonObject = null;
-            try{
-                jsonObject = jsonArray.getJSONObject(i);
-                messageNotification.setNotificationTitle(jsonObject.getString("messageTitle"));
-                messageNotification.setNotificationBody(jsonObject.getString("message"));
-            }catch (Exception e){e.printStackTrace();}
-            messageNotifications.add(messageNotification);
-        }
-
-        //Finally initializing our adapter
-        adapter = new CardAdapter(messageNotifications, this);
-        //Adding adapter to recyclerView
-        recyclerView.setAdapter(adapter);
-    }
 }
 
