@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        android:id="@+id/top_book_profile"
+        android:title="Profile" />
+
+    <item
+        android:id="@+id/top_book_settings"
+        android:title="Settings" />
+
+    <item
+        android:id="@+id/top_book_logout"
+        android:title="Log Out" />
+
+    <item
+        android:title="Sort by subject"
+        app:showAsAction="ifRoom"
+        android:id="@+id/sortMenu"
+        >
+        <menu>
+            <item
+                android:id="@+id/sortMathematics"
+                android:title="Mathematics" />
+
+            <item
+                android:id="@+id/sortPhysics"
+                android:title="Physics" />
+
+            <item
+                android:id="@+id/sortChemistry"
+                android:title="Chemistry" />
+
+            <item
+                android:id="@+id/sortBiology"
+                android:title="Biology" />
+
+            <item
+                android:id="@+id/sortAeronautical"
+                android:title="Aeronautical" />
+
+            <item
+                android:id="@+id/sortAutomobile"
+                android:title="Automobile" />
+
+            <item
+                android:id="@+id/sortBiotechnology"
+                android:title="Biotechnology" />
+
+            <item
+                android:id="@+id/sortChemicalEngg"
+                android:title="Chemical Engg" />
+
+            <item
+                android:id="@+id/sortCivilEngg"
+                android:title="Civil Engg" />
+
+            <item
+                android:id="@+id/sortComputerScience"
+                android:title="Computer Science" />
+
+            <item
+                android:id="@+id/sortElectrical"
+                android:title="Electrical" />
+
+            <item
+                android:id="@+id/sortElectronics"
+                android:title="Electronics" />
+
+            <item
+                android:id="@+id/sortTelecomunication"
+                android:title="Telecomunication" />
+
+        </menu>
+    </item>
+
+</menu>

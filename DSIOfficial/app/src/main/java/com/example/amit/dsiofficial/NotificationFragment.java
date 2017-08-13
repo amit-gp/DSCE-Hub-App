@@ -3,16 +3,24 @@ package com.example.amit.dsiofficial;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,6 +32,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -53,6 +63,44 @@ public class NotificationFragment extends Fragment {
     private RequestQueue requestQueue;
     String notificationURL = UrlStrings.notificationUrl;
     private OnFragmentInteractionListener mListener;
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+
+        //MenuItem item = menu.findItem(R.id.top_navigation_search);
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.top_navigation, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        Log.i("ALERT !!", "OPTIONS SELECTED");
+
+        if(id == R.id.top_navigation_logout)
+        {
+            //Toast.makeText(this, "DSH BRD", Toast.LENGTH_LONG).show();
+            User.setIsLoggedin(false);
+            User.removeAllCredentials();
+
+            SharedPreferences sp= getActivity().getSharedPreferences("Login", MODE_PRIVATE);
+            SharedPreferences.Editor Ed=sp.edit();
+            Ed.putBoolean("isLoggedIn", false);
+            Ed.commit();
+
+            Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     public NotificationFragment() {
         // Required empty public constructor
@@ -90,24 +138,16 @@ public class NotificationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_notification, container, false);
+        setHasOptionsMenu(true);
+
         //Initializing Views
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(layoutManager);
-        //Adding adapter to recyclerView
-        recyclerView.setAdapter(adapter);
 
-        if(savedInstanceState != null) {
-
-            messageNotifications = savedInstanceState.getParcelableArrayList(NOTIF_MESSAGES);
-            adapter.
-        }
-        else {
-
-            messageNotifications = new ArrayList<>();
-            sendAndPrintResponse();
-        }
+        messageNotifications = new ArrayList<>();
+        sendAndPrintResponse();
 
         return view;
     }
@@ -167,6 +207,8 @@ public class NotificationFragment extends Fragment {
 
         //Finally initializing our adapter
         adapter = new CardAdapter(messageNotifications, this.getContext());
+        //Adding adapter to recyclerView
+        recyclerView.setAdapter(adapter);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -176,11 +218,6 @@ public class NotificationFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putParcelableArrayList(NOTIF_MESSAGES, messageNotifications);
-    }
 
     @Override
     public void onAttach(Context context) {

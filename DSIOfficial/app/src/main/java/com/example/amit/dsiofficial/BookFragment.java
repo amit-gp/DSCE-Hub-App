@@ -3,6 +3,8 @@ package com.example.amit.dsiofficial;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,9 +13,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,6 +31,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -58,6 +69,101 @@ public class BookFragment extends Fragment {
         // Required empty public constructor
     }
 
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+
+        //MenuItem item = menu.findItem(R.id.top_navigation_search);
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.top_book_navigation, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        Log.i("ALERT !!", "OPTIONS SELECTED");
+
+        if(id == R.id.top_navigation_logout)
+        {
+            //Toast.makeText(this, "DSH BRD", Toast.LENGTH_LONG).show();
+            User.setIsLoggedin(false);
+            User.removeAllCredentials();
+
+            SharedPreferences sp= getActivity().getSharedPreferences("Login", MODE_PRIVATE);
+            SharedPreferences.Editor Ed=sp.edit();
+            Ed.putBoolean("isLoggedIn", false);
+            Ed.commit();
+
+            Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        if(id == R.id.sortMathematics) {
+
+            sendAndPrintResponse();
+          //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if(id == R.id.sortPhysics) {
+            //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if(id == R.id.sortChemicalEngg) {
+            //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if(id == R.id.sortAeronautical) {
+            //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if(id == R.id.sortAutomobile) {
+            //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if(id == R.id.sortBiology) {
+            //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if(id == R.id.sortBiotechnology) {
+            //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if(id == R.id.sortCivilEngg) {
+            //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if(id == R.id.sortComputerScience) {
+            //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if(id == R.id.sortTelecomunication) {
+            //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if(id == R.id.sortElectronics) {
+            //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if(id == R.id.sortElectrical) {
+            //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if(id == R.id.sortChemistry) {
+            //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -89,9 +195,10 @@ public class BookFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_notification, container, false);
+        View view =  inflater.inflate(R.layout.fragment_book, container, false);
+        setHasOptionsMenu(true);
         //Initializing Views
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewBook);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -121,7 +228,16 @@ public class BookFragment extends Fragment {
                 addRefreshGui();
                 Log.i("ALERT ERROR!!", error.toString());
             }
-        });
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("param1", num1);
+                params.put("param2", num2);
+                return mParams;
+            }
+        };
 
         requestQueue.add(jsonArrayRequest);
     }
@@ -142,6 +258,7 @@ public class BookFragment extends Fragment {
 
     private void parseJsonArrayResponse(JSONArray jsonArray)
     {
+        bookNotifications.clear();
         for (int i = 0; i < jsonArray.length(); i++)
         {
             BookNotification bookNotification = new BookNotification();
