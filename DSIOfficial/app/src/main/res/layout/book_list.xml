@@ -23,6 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+
                 >
 
                 <TextView
@@ -33,18 +34,18 @@
                     android:textSize="20sp"
                     android:textColor="@color/messageHeadingColour"
                     android:layout_margin="10dp"
-                    android:ellipsize="marquee"
-                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:maxEms="10"
                     />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/bookEditionTextView"
                     android:text="5th Edition"
                     android:textColor="@color/messageDescriptionColour"
-                    android:textSize="17sp"
                     android:maxLines="1"
+                    android:textSize="17sp"
                     android:layout_margin="10dp"
 
                     />
@@ -54,7 +55,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal"
                 >
 

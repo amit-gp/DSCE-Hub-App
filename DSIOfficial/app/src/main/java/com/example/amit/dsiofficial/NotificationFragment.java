@@ -39,6 +39,7 @@ public class NotificationFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final String NOTIF_MESSAGES = "state_movies";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -94,9 +95,20 @@ public class NotificationFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(layoutManager);
+        //Adding adapter to recyclerView
+        recyclerView.setAdapter(adapter);
 
-        messageNotifications = new ArrayList<>();
-        sendAndPrintResponse();
+        if(savedInstanceState != null) {
+
+            messageNotifications = savedInstanceState.getParcelableArrayList(NOTIF_MESSAGES);
+            adapter.
+        }
+        else {
+
+            messageNotifications = new ArrayList<>();
+            sendAndPrintResponse();
+        }
+
         return view;
     }
 
@@ -155,8 +167,6 @@ public class NotificationFragment extends Fragment {
 
         //Finally initializing our adapter
         adapter = new CardAdapter(messageNotifications, this.getContext());
-        //Adding adapter to recyclerView
-        recyclerView.setAdapter(adapter);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -164,6 +174,12 @@ public class NotificationFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(NOTIF_MESSAGES, messageNotifications);
     }
 
     @Override
