@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -49,6 +50,20 @@ public class LoginActivity extends Activity {
         signUpTextView.setTypeface(custom_font);
         emailEditText.setTypeface(custom_font);
         passwordEditText.setTypeface(custom_font);
+
+        SharedPreferences sp1=this.getSharedPreferences("Login", MODE_PRIVATE);
+        if(sp1.getBoolean("isLoggedIn", false)) {
+
+            User.setUserName(sp1.getString("Name", null));
+            User.setPassword(sp1.getString("Password", null));
+            User.setPhoneNum(sp1.getString("PhoneNum", null));
+            User.setEmail(sp1.getString("Email", null));
+            User.setIsLoggedin(true);
+
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         loginTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +115,16 @@ public class LoginActivity extends Activity {
             public void onErrorResponse(VolleyError error) {
                 loading.dismiss();
                 error.printStackTrace();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                builder.setMessage("Cannot connect")
+                        .setCancelable(true)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //Returns back to previous page
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
                 Log.i("ALERT ERROR!!", error.toString());
             }
         }){
@@ -144,6 +169,17 @@ public class LoginActivity extends Activity {
             User.setUserName(response.getString("Name"));
             Toast.makeText(this, response.getString("Email"), Toast.LENGTH_LONG).show();
             User.setIsLoggedin(true);
+
+            //Storing data locally
+            SharedPreferences sp=getSharedPreferences("Login", MODE_PRIVATE);
+            SharedPreferences.Editor Ed=sp.edit();
+            Ed.putString("Name",User.getUserName() );
+            Ed.putString("Password",User.getPassword());
+            Ed.putString("Email", User.getEmail());
+            Ed.putString("PhoneNum", User.getPhoneNum());
+            Ed.putBoolean("isLoggedIn", User.getIsLoggedin());
+            Ed.commit();
+
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();

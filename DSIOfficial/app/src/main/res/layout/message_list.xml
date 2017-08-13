@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/messageTitleTextView"
                 android:text="Message Title"
-                android:textSize="30sp"
+                android:textSize="22sp"
                 android:textColor="@color/messageHeadingColour"
                 android:layout_margin="10dp"/>
 
@@ -34,7 +34,7 @@
                 android:id="@+id/messageBodyTextView"
                 android:text="Message Body"
                 android:textColor="@color/messageDescriptionColour"
-                android:textSize="24sp"
+                android:textSize="17sp"
                 android:layout_margin="10dp"
 
                 />

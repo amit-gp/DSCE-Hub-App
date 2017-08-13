@@ -60,4 +60,13 @@ public class User {
     public static void setPhoneNum(String phoneNum) {
         User.phoneNum = phoneNum;
     }
+
+    public static void removeAllCredentials(){
+
+        Email = "";
+        userName = "";
+        phoneNum = "";
+        USN = "";
+        password = "";
+    }
 }
