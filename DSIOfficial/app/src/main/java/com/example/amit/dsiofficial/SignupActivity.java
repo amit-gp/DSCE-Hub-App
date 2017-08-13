@@ -64,8 +64,9 @@ public class SignupActivity extends Activity {
         loginTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(SignupActivity.this, LoginActivity.class);
-                startActivity(it);
+                //Intent it = new Intent(SignupActivity.this, LoginActivity.class);
+                //startActivity(it);
+                finish();
             }
         });
 

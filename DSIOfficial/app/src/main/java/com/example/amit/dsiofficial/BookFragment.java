@@ -1,12 +1,29 @@
 package com.example.amit.dsiofficial;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 
 /**
@@ -26,6 +43,14 @@ public class BookFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private RecyclerView.Adapter adapter;
+    private ArrayList<BookNotification> bookNotifications;
+    private JsonArrayRequest jsonArrayRequest;
+    private RequestQueue requestQueue;
+    String notificationURL = UrlStrings.bookUrl;
 
     private OnFragmentInteractionListener mListener;
 
@@ -64,7 +89,83 @@ public class BookFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_book, container, false);
+        View view =  inflater.inflate(R.layout.fragment_notification, container, false);
+        //Initializing Views
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this.getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+        bookNotifications = new ArrayList<>();
+        sendAndPrintResponse();
+        return view;
+    }
+
+    private void sendAndPrintResponse()
+    {
+        //Showing a progress dialog
+        final ProgressDialog loading = ProgressDialog.show(this.getContext(),"Loading Data", "Please wait...",false,false);
+        requestQueue = VolleySingleton.getInstance(this.getContext()).getRequestQueue(this.getContext());
+
+        jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, notificationURL, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                Log.i("ALERT !!", response.toString());
+                loading.dismiss();
+                parseJsonArrayResponse(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                loading.dismiss();
+                addRefreshGui();
+                Log.i("ALERT ERROR!!", error.toString());
+            }
+        });
+
+        requestQueue.add(jsonArrayRequest);
+    }
+
+    private void addRefreshGui()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+        builder.setMessage("Could not connect to Database.")
+                .setCancelable(false)
+                .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        sendAndPrintResponse();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    private void parseJsonArrayResponse(JSONArray jsonArray)
+    {
+        for (int i = 0; i < jsonArray.length(); i++)
+        {
+            BookNotification bookNotification = new BookNotification();
+            JSONObject jsonObject = null;
+            try{
+                jsonObject = jsonArray.getJSONObject(i);
+
+                bookNotification.setTitle(jsonObject.getString("Title"));
+                bookNotification.setAuthor(jsonObject.getString("Author"));
+                bookNotification.setDescription(jsonObject.getString("Description"));
+                bookNotification.setEdition(jsonObject.getString("Edition"));
+                bookNotification.setPrice(jsonObject.getString("Price"));
+                bookNotification.setSellerEmail(jsonObject.getString("Email"));
+                bookNotification.setSellerName(jsonObject.getString("Name"));
+                bookNotification.setContactNumber(jsonObject.getString("ContactNumber"));
+
+            }catch (Exception e){e.printStackTrace();}
+            bookNotifications.add(bookNotification);
+        }
+
+        //Finally initializing our adapter
+        adapter = new BookAdapter(bookNotifications, this.getContext());
+        //Adding adapter to recyclerView
+        recyclerView.setAdapter(adapter);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

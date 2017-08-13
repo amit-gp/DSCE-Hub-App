@@ -115,16 +115,7 @@ public class LoginActivity extends Activity {
             public void onErrorResponse(VolleyError error) {
                 loading.dismiss();
                 error.printStackTrace();
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                builder.setMessage("Cannot connect")
-                        .setCancelable(true)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                //Returns back to previous page
-                            }
-                        });
-                AlertDialog alert = builder.create();
-                alert.show();
+                showCannotConnectDialog();
                 Log.i("ALERT ERROR!!", error.toString());
             }
         }){
@@ -140,6 +131,20 @@ public class LoginActivity extends Activity {
         requestQueue.add(jsonLoginRequest);
     }
 
+    private void showCannotConnectDialog()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Cannot connect")
+                .setCancelable(true)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //Returns back to previous page
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
     private void parseJsonResponse(JSONObject response)
     {
         String responseString = "";
@@ -150,7 +155,7 @@ public class LoginActivity extends Activity {
 
         if(responseString.equals("Unsuccessful")){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Login UnSuccessful")
+            builder.setMessage("Incorrect Credentials")
                     .setCancelable(true)
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
