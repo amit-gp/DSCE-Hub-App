@@ -7,12 +7,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,7 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -63,6 +62,7 @@ public class NotificationFragment extends Fragment {
     private RequestQueue requestQueue;
     String notificationURL = UrlStrings.notificationUrl;
     private OnFragmentInteractionListener mListener;
+    private FloatingActionButton fabNotification;
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
@@ -96,6 +96,7 @@ public class NotificationFragment extends Fragment {
 
             Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
             startActivity(intent);
+            getActivity().finish();
             return true;
         }
 
@@ -127,6 +128,7 @@ public class NotificationFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -142,6 +144,17 @@ public class NotificationFragment extends Fragment {
 
         //Initializing Views
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        if(User.getIsAdmin()){
+
+            fabNotification = (FloatingActionButton) view.findViewById(R.id.fabNotification);
+            fabNotification.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Toast.makeText(getContext(), "FAB !!!!!", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(layoutManager);

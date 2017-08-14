@@ -174,6 +174,7 @@ public class LoginActivity extends Activity {
             User.setUserName(response.getString("Name"));
             Toast.makeText(this, response.getString("Email"), Toast.LENGTH_LONG).show();
             User.setIsLoggedin(true);
+            User.setIsAdmin(Boolean.parseBoolean(response.getString("Admin")));
 
             //Storing data locally
             SharedPreferences sp=getSharedPreferences("Login", MODE_PRIVATE);
@@ -183,6 +184,7 @@ public class LoginActivity extends Activity {
             Ed.putString("Email", User.getEmail());
             Ed.putString("PhoneNum", User.getPhoneNum());
             Ed.putBoolean("isLoggedIn", User.getIsLoggedin());
+            Ed.putBoolean("isAdmin", User.getIsAdmin());
             Ed.commit();
 
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);

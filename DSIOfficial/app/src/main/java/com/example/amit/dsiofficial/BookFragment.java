@@ -98,6 +98,7 @@ public class BookFragment extends Fragment {
 
             Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
             startActivity(intent);
+            getActivity().finish();
             return true;
         }
 
@@ -113,46 +114,57 @@ public class BookFragment extends Fragment {
             return true;
         }
         if(id == R.id.sortChemicalEngg) {
+            sendAndPrintResponse("ChemicalEngg");
             //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
             return true;
         }
         if(id == R.id.sortAeronautical) {
+            sendAndPrintResponse("Aeronautical");
             //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
             return true;
         }
         if(id == R.id.sortAutomobile) {
+            sendAndPrintResponse("Automobile");
             //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
             return true;
         }
         if(id == R.id.sortBiology) {
+            sendAndPrintResponse("Biology");
             //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
             return true;
         }
         if(id == R.id.sortBiotechnology) {
+            sendAndPrintResponse("Biotechnology");
             //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
             return true;
         }
         if(id == R.id.sortCivilEngg) {
+            sendAndPrintResponse("CivilEngg");
             //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
             return true;
         }
         if(id == R.id.sortComputerScience) {
+            sendAndPrintResponse("Math");
             //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
             return true;
         }
         if(id == R.id.sortTelecomunication) {
+            sendAndPrintResponse("Telecommunication");
             //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
             return true;
         }
         if(id == R.id.sortElectronics) {
+            sendAndPrintResponse("Electronics");
             //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
             return true;
         }
         if(id == R.id.sortElectrical) {
+            sendAndPrintResponse("Electrical");
             //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
             return true;
         }
         if(id == R.id.sortChemistry) {
+            sendAndPrintResponse("Chemistry");
             //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
             return true;
         }

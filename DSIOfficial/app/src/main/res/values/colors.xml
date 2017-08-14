@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#313f91</color>
     <color name="colorPrimaryDark">#313f91</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#000000</color>
     <color name="messageHeadingColour">#000000</color>
     <color name="messageDescriptionColour">#494949</color>
+    <color name="fabColour">#b39c2b</color>
 </resources>

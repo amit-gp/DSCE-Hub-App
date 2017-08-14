@@ -12,6 +12,15 @@ public class User {
     private static String Email;
     private static String phoneNum;
     private static Boolean isLoggedin = false;
+    private static Boolean isAdmin = false;
+
+    public static Boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public static void setIsAdmin(Boolean isAdmin) {
+        User.isAdmin = isAdmin;
+    }
 
     public static Boolean getIsLoggedin() {
         return isLoggedin;
