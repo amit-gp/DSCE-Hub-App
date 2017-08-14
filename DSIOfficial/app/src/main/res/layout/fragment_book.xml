@@ -14,22 +14,20 @@
 
 
     <android.support.design.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/fabLayout"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabBook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="30dp"
-            app:fabSize="mini"
-            android:src="@drawable/addbook"
-            android:id="@+id/fabBook"
-
+            android:src="@drawable/newvook"
             app:elevation="10dp"
-            />
+
+            app:fabSize="mini" />
     </android.support.design.widget.CoordinatorLayout>
 
 </FrameLayout>
