@@ -18,9 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -31,8 +29,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -107,11 +103,12 @@ public class BookFragment extends Fragment {
 
         if(id == R.id.sortMathematics) {
 
-            sendAndPrintResponse();
+            sendAndPrintResponse("Math");
           //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
             return true;
         }
         if(id == R.id.sortPhysics) {
+            sendAndPrintResponse("Physics");
             //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
             return true;
         }
@@ -204,17 +201,18 @@ public class BookFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         bookNotifications = new ArrayList<>();
-        sendAndPrintResponse();
+        sendAndPrintResponse("");
         return view;
     }
 
-    private void sendAndPrintResponse()
+    private void sendAndPrintResponse(final String subject)
     {
         //Showing a progress dialog
         final ProgressDialog loading = ProgressDialog.show(this.getContext(),"Loading Data", "Please wait...",false,false);
         requestQueue = VolleySingleton.getInstance(this.getContext()).getRequestQueue(this.getContext());
 
-        jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, notificationURL, null, new Response.Listener<JSONArray>() {
+        Log.d("ALERT !!", notificationURL);
+        jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, notificationURL + "?Subject=" + subject, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 Log.i("ALERT !!", response.toString());
@@ -228,17 +226,7 @@ public class BookFragment extends Fragment {
                 addRefreshGui();
                 Log.i("ALERT ERROR!!", error.toString());
             }
-        })
-        {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("param1", num1);
-                params.put("param2", num2);
-                return mParams;
-            }
-        };
-
+        });
         requestQueue.add(jsonArrayRequest);
     }
 
@@ -249,7 +237,7 @@ public class BookFragment extends Fragment {
                 .setCancelable(false)
                 .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        sendAndPrintResponse();
+                        sendAndPrintResponse("");
                     }
                 });
         AlertDialog alert = builder.create();
