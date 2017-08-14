@@ -80,7 +80,7 @@ public class SignupActivity extends Activity {
         JSONObject loginJsonObject = null;
         try {
 
-            loginJsonObject = new JSONObject().put("Email", emailEditText.getText()).put("Password", passwordEditText.getText()).put("ContactNumber", phoneEditText.getText()).put("Name", userNameEditText.getText());
+            loginJsonObject = new JSONObject().put("Email", emailEditText.getText()).put("Password", passwordEditText.getText()).put("ContactNumber", phoneEditText.getText()).put("Name", userNameEditText.getText()).put("Admin", "false");
         }catch (Exception e){e.printStackTrace();}
 
         jsonLoginRequest = new JsonObjectRequest(Request.Method.POST, loginURL, loginJsonObject, new Response.Listener<JSONObject>() {
@@ -136,6 +136,7 @@ public class SignupActivity extends Activity {
             User.setPassword(response.getString("Password"));
             User.setPhoneNum(response.getString("ContactNumber"));
             User.setUserName(response.getString("Name"));
+            User.setIsAdmin(Boolean.parseBoolean(response.getString("Admin")));
             Toast.makeText(this, response.getString("Email"), Toast.LENGTH_LONG).show();
             Intent intent = new Intent(SignupActivity.this, MainActivity.class);
             User.setIsLoggedin(true);

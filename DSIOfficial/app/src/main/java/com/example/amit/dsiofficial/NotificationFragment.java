@@ -5,14 +5,17 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -62,7 +65,6 @@ public class NotificationFragment extends Fragment {
     private RequestQueue requestQueue;
     String notificationURL = UrlStrings.notificationUrl;
     private OnFragmentInteractionListener mListener;
-    private FloatingActionButton fabNotification;
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
@@ -74,6 +76,9 @@ public class NotificationFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        if(User.getIsAdmin()){
+            MenuItem menuItem = menu.add("Post Notification");
+        }
         inflater.inflate(R.menu.top_navigation, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -144,9 +149,21 @@ public class NotificationFragment extends Fragment {
 
         //Initializing Views
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        /*
         if(User.getIsAdmin()){
 
-            fabNotification = (FloatingActionButton) view.findViewById(R.id.fabNotification);
+            FloatingActionButton fabNotification = new FloatingActionButton(getContext());
+
+            CoordinatorLayout.LayoutParams fabLayoutParams = new CoordinatorLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            fabLayoutParams.gravity = Gravity.BOTTOM | Gravity.END;
+            fabNotification.setLayoutParams(fabLayoutParams);
+            fabNotification.setSize(FloatingActionButton.SIZE_MINI);
+            fabNotification.setBackgroundColor(getResources().getColor(R.color.fabColour));
+
+
+            CoordinatorLayout coordinatorLayout = (CoordinatorLayout) view.findViewById(R.id.fabLayout);
+            CoordinatorLayout.LayoutParams layoutParams = new CoordinatorLayout.LayoutParams(CoordinatorLayout.LayoutParams.MATCH_PARENT, CoordinatorLayout.LayoutParams.MATCH_PARENT);
+            coordinatorLayout.addView(fabNotification, layoutParams);
             fabNotification.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -154,7 +171,7 @@ public class NotificationFragment extends Fragment {
                     Toast.makeText(getContext(), "FAB !!!!!", Toast.LENGTH_SHORT).show();
                 }
             });
-        }
+        }*/
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(layoutManager);
