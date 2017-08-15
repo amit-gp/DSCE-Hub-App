@@ -1,9 +1,276 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.amit.dsiofficial.BookInfoActivity"
-    android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+    android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+    android:orientation="vertical"
+    >
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title: "
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/infoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="13dp"
+            android:text="My book title "
+            android:textColor="#000"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Author: "
+            android:textColor="#000"
+            android:textSize="16dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My book title "
+            android:paddingLeft="13dp"
+            android:textColor="#000"
+            android:textSize="16dp"
+            android:id="@+id/infoAuthor"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Subject: "
+        android:textColor="#000"
+        android:textSize="16dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My book subject "
+        android:paddingLeft="13dp"
+        android:textColor="#000"
+        android:textSize="16dp"
+        android:id="@+id/infoSubject"
+        />
+</LinearLayout>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price: "
+        android:textColor="#000"
+        android:textSize="16dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My book price "
+        android:id="@+id/infoPrice"
+        android:paddingLeft="13dp"
+        android:textColor="#000"
+        android:textSize="16dp"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(Rupees)"
+            android:paddingLeft="7dp"
+            android:textColor="#000"
+            android:textSize="16dp"
+            />
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description: "
+            android:textColor="#000"
+            android:textSize="16dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My book subject "
+            android:paddingLeft="13dp"
+            android:textColor="#000"
+            android:textSize="16dp"
+            android:id="@+id/infoDescription"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="17dp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seller Information:"
+            android:paddingLeft="13dp"
+            android:textColor="#000"
+            android:textSize="23dp"
+            android:paddingBottom="10dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name: "
+                android:textColor="#000"
+                android:textSize="16dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My book subject "
+                android:paddingLeft="13dp"
+                android:id="@+id/infoBookName"
+                android:textColor="#000"
+                android:textSize="16dp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact Number: "
+                android:textColor="#000"
+                android:textSize="16dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My book subject "
+                android:paddingLeft="13dp"
+                android:textColor="#000"
+                android:id="@+id/infoPhone"
+                android:textSize="16dp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email: "
+                android:textColor="#000"
+                android:textSize="16dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My book subject "
+                android:paddingLeft="13dp"
+                android:id="@+id/infoEmail"
+                android:textColor="#000"
+                android:textSize="16dp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingRight="60dp"
+            android:paddingLeft="60dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            >
+
+            <TextView
+                android:id="@+id/callSeller"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#f11411a1"
+                android:text="Call Seller"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_gravity="bottom"
+                android:letterSpacing="0.2"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

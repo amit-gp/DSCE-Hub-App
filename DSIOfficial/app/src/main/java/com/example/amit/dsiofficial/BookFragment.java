@@ -27,6 +27,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -282,14 +283,15 @@ public class BookFragment extends Fragment {
                 bookNotification.setTitle(jsonObject.getString("Title"));
                 bookNotification.setAuthor(jsonObject.getString("Author"));
                 bookNotification.setDescription(jsonObject.getString("Description"));
-                bookNotification.setEdition(jsonObject.getString("Edition"));
                 bookNotification.setPrice(jsonObject.getString("Price"));
                 bookNotification.setSellerEmail(jsonObject.getString("Email"));
                 bookNotification.setSellerName(jsonObject.getString("Name"));
                 bookNotification.setContactNumber(jsonObject.getString("ContactNumber"));
                 bookNotification.setSubjet(jsonObject.getString("Subject"));
 
-            }catch (Exception e){e.printStackTrace();}
+            }catch (JSONException e) {
+                e.printStackTrace();
+            }
             bookNotifications.add(bookNotification);
         }
 

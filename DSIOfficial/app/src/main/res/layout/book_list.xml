@@ -28,7 +28,7 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:id="@+id/bookTitleTextView"
                     android:text="Book Title"
                     android:textSize="20sp"
@@ -39,15 +39,17 @@
                     />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/bookEditionTextView"
-                    android:text="5th Edition"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/bookSubjectTextView"
+                    android:text="Subject"
+                    android:layout_weight="6.22"
+                    android:gravity="end"
+                    android:textAlignment="viewEnd"
                     android:textColor="@color/messageDescriptionColour"
-                    android:maxLines="1"
                     android:textSize="17sp"
-                    android:layout_margin="10dp"
-
+                    android:layout_margin="7dp"
+                    android:paddingTop="5dp"
                     />
 
             </LinearLayout>

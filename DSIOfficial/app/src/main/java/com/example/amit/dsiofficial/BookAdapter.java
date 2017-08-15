@@ -31,7 +31,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>
         BookNotification notification = bookNotifications.get(position);
         //String notificationMessageHint = notification.getNotificationTitle().substring(0, 25) + "...";
         holder.bookTitleTextView.setText(notification.getTitle());
-        holder.bookEditionTextView.setText(notification.getEdition());
+        holder.bookSubjectTextView.setText(notification.getSubjet());
         holder.bookPriceTextView.setText(notification.getPrice());
         holder.bookAuthorTextView.setText(notification.getAuthor());
         holder.subject = bookNotifications.get(position).getSubjet();
@@ -55,7 +55,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView bookTitleTextView;
-        private TextView bookEditionTextView;
+        private TextView bookSubjectTextView;
         private TextView bookAuthorTextView;
         private TextView bookPriceTextView;
         private String subject;
@@ -66,7 +66,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>
             bookTitleTextView = (TextView) view.findViewById(R.id.bookTitleTextView);
             bookAuthorTextView = (TextView) view.findViewById(R.id.bookAuthorTextView);
             bookPriceTextView = (TextView) view.findViewById(R.id.bookPriceTextView);
-            bookEditionTextView = (TextView) view.findViewById(R.id.bookEditionTextView);
+            bookSubjectTextView = (TextView) view.findViewById(R.id.bookSubjectTextView);
 
 
             view.setOnClickListener(new View.OnClickListener() {
@@ -79,11 +79,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>
                     intent.putExtra("Title", bookTitleTextView.getText());
                     intent.putExtra("Author", bookAuthorTextView.getText());
                     intent.putExtra("Price", bookPriceTextView.getText());
-                    intent.putExtra("Edition", bookEditionTextView.getText());
+                    intent.putExtra("Edition", bookSubjectTextView.getText());
                     intent.putExtra("Subject", subject);
                     intent.putExtra("Name", name);
-                    intent.putExtra("Phone", email);
-                    intent.putExtra("Email", phone);
+                    intent.putExtra("Phone", phone);
+                    intent.putExtra("Email", email);
                     context.startActivity(intent);
                 }
             });

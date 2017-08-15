@@ -8,7 +8,6 @@ public class BookNotification
 {
     private String title;
     private String author;
-    private String edition;
     private String price;
     private String description;
     private String sellerName;
@@ -72,16 +71,6 @@ public class BookNotification
     public void setAuthor(String author)
     {
         this.author = author;
-    }
-
-    public String getEdition()
-    {
-        return edition;
-    }
-
-    public void setEdition(String edition)
-    {
-        this.edition = edition;
     }
 
     public String getPrice()
