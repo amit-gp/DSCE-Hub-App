@@ -7,6 +7,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string-array name="subjects_array">
+
         <item>Math</item>
         <item>Physics</item>
         <item>ChemicalEngg</item>
