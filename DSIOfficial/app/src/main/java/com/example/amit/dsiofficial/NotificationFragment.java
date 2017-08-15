@@ -53,7 +53,7 @@ public class NotificationFragment extends Fragment {
     private String mParam2;
     //Creating Views
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
+    private LinearLayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
     private ArrayList<MessageNotification> messageNotifications;
     private JsonArrayRequest jsonArrayRequest;
@@ -178,6 +178,8 @@ public class NotificationFragment extends Fragment {
         }*/
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext());
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
 
         messageNotifications = new ArrayList<>();
