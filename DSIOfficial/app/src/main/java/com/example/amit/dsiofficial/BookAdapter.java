@@ -3,14 +3,12 @@ package com.example.amit.dsiofficial;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by Amit Kumar on 13-08-2017.
@@ -36,6 +34,10 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>
         holder.bookEditionTextView.setText(notification.getEdition());
         holder.bookPriceTextView.setText(notification.getPrice());
         holder.bookAuthorTextView.setText(notification.getAuthor());
+        holder.subject = bookNotifications.get(position).getSubjet();
+        holder.name = bookNotifications.get(position).getSellerName();
+        holder.phone = bookNotifications.get(position).getContactNumber();
+        holder.email = bookNotifications.get(position).getSellerEmail();
     }
 
     @Override
@@ -56,6 +58,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>
         private TextView bookEditionTextView;
         private TextView bookAuthorTextView;
         private TextView bookPriceTextView;
+        private String subject;
+        private String name, email, phone;
 
         public ViewHolder(View view){
             super(view);
@@ -64,13 +68,23 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>
             bookPriceTextView = (TextView) view.findViewById(R.id.bookPriceTextView);
             bookEditionTextView = (TextView) view.findViewById(R.id.bookEditionTextView);
 
+
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-                    //Log.i("ALERT !!", "View " + messageTitleTextView.getText() +" Clicked !!");
-                   // Intent intent = new Intent();
 
+                    //Log.i("ALERT !!", "View " + bookTitleTextView.getText() +" Clicked !!");
+                    Intent intent = new Intent(context, BookInfoActivity.class);
+                    intent.putExtra("Title", bookTitleTextView.getText());
+                    intent.putExtra("Author", bookAuthorTextView.getText());
+                    intent.putExtra("Price", bookPriceTextView.getText());
+                    intent.putExtra("Edition", bookEditionTextView.getText());
+                    intent.putExtra("Subject", subject);
+                    intent.putExtra("Name", name);
+                    intent.putExtra("Phone", email);
+                    intent.putExtra("Email", phone);
+                    context.startActivity(intent);
                 }
             });
         }

@@ -59,7 +59,7 @@
                     android:id="@+id/usrusr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Username"
+                    android:hint="Name"
                     android:textColorHint="#ffff"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"

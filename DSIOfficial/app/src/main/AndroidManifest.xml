@@ -20,7 +20,9 @@
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignupActivity" />
-        <activity android:name=".NewBookActivity"></activity>
+        <activity android:name=".NewBookActivity" />
+        <activity android:name=".BookInfoActivity" />
+        <activity android:name=".PostNotificationActivity"></activity>
     </application>
 
 </manifest>

@@ -19,7 +19,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -87,7 +86,7 @@ public class BookFragment extends Fragment {
         int id = item.getItemId();
         Log.i("ALERT !!", "OPTIONS SELECTED");
 
-        if(id == R.id.top_navigation_logout)
+        if(id == R.id.top_book_logout)
         {
             //Toast.makeText(this, "DSH BRD", Toast.LENGTH_LONG).show();
             User.setIsLoggedin(false);
@@ -146,7 +145,7 @@ public class BookFragment extends Fragment {
             return true;
         }
         if(id == R.id.sortComputerScience) {
-            sendAndPrintResponse("Math");
+            sendAndPrintResponse("ComputerSc");
             //  Toast.makeText(getActivity(), "MATH CLICKED !!", Toast.LENGTH_SHORT).show();
             return true;
         }
@@ -214,10 +213,15 @@ public class BookFragment extends Fragment {
         layoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(layoutManager);
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fabBook);
+
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "FAB CLICKED", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getActivity(), NewBookActivity.class);
+                startActivity(intent);
+                //Toast.makeText(getContext(), "FAB CLICKED", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -283,6 +287,7 @@ public class BookFragment extends Fragment {
                 bookNotification.setSellerEmail(jsonObject.getString("Email"));
                 bookNotification.setSellerName(jsonObject.getString("Name"));
                 bookNotification.setContactNumber(jsonObject.getString("ContactNumber"));
+                bookNotification.setSubjet(jsonObject.getString("Subject"));
 
             }catch (Exception e){e.printStackTrace();}
             bookNotifications.add(bookNotification);
