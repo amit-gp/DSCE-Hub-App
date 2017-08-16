@@ -9,13 +9,6 @@
         android:orientation="vertical"
         >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pull down to refresh "
-            android:textAlignment="center"
-            android:letterSpacing="0.3"
-            />
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swiperefresh"

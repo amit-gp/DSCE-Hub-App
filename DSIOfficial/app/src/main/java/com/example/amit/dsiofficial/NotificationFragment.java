@@ -94,8 +94,12 @@ public class NotificationFragment extends Fragment {
         int id = item.getItemId();
         Log.i("ALERT !!", "OPTIONS SELECTED");
 
-        if(id == R.id.top_navigation_logout)
-        {
+        if(id == R.id.top_navigation_profile){
+            Intent intent = new Intent(getActivity(), MyProfileActivity.class);
+            startActivity(intent);
+        }
+
+        if(id == R.id.top_navigation_logout) {
             //Toast.makeText(this, "DSH BRD", Toast.LENGTH_LONG).show();
             User.setIsLoggedin(false);
             User.removeAllCredentials();
@@ -174,7 +178,6 @@ public class NotificationFragment extends Fragment {
 
         return view;
     }
-
 
     private void sendAndPrintResponse()
     {

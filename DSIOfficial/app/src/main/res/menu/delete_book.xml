@@ -5,7 +5,7 @@
 
     <item
         app:showAsAction="ifRoom"
-        android:title="Delete: "
+        android:title="Delete "
         />
 
     <item

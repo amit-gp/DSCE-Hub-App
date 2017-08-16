@@ -89,6 +89,11 @@ public class BookFragment extends Fragment {
         int id = item.getItemId();
         Log.i("ALERT !!", "OPTIONS SELECTED");
 
+        if(id == R.id.top_book_profile){
+            Intent intent = new Intent(getActivity(), MyProfileActivity.class);
+            startActivity(intent);
+        }
+
         if(id == R.id.top_book_logout)
         {
             //Toast.makeText(this, "DSH BRD", Toast.LENGTH_LONG).show();
