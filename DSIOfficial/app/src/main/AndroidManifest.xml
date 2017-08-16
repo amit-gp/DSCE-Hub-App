@@ -22,7 +22,8 @@
         <activity android:name=".SignupActivity" />
         <activity android:name=".NewBookActivity" />
         <activity android:name=".BookInfoActivity" />
-        <activity android:name=".PostNotificationActivity"></activity>
+        <activity android:name=".PostNotificationActivity" />
+        <activity android:name=".MyProfileActivity"></activity>
     </application>
 
 </manifest>

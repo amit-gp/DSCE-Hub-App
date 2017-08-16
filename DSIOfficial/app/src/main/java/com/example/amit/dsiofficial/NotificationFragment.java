@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -60,6 +61,7 @@ public class NotificationFragment extends Fragment {
     private RequestQueue requestQueue;
     String notificationURL = UrlStrings.notificationUrl;
     private OnFragmentInteractionListener mListener;
+    SwipeRefreshLayout swipeLayout;
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
@@ -153,29 +155,14 @@ public class NotificationFragment extends Fragment {
 
         //Initializing Views
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        /*
-        if(User.getIsAdmin()){
+        swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swiperefresh);
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
 
-            FloatingActionButton fabNotification = new FloatingActionButton(getContext());
-
-            CoordinatorLayout.LayoutParams fabLayoutParams = new CoordinatorLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            fabLayoutParams.gravity = Gravity.BOTTOM | Gravity.END;
-            fabNotification.setLayoutParams(fabLayoutParams);
-            fabNotification.setSize(FloatingActionButton.SIZE_MINI);
-            fabNotification.setBackgroundColor(getResources().getColor(R.color.fabColour));
-
-
-            CoordinatorLayout coordinatorLayout = (CoordinatorLayout) view.findViewById(R.id.fabLayout);
-            CoordinatorLayout.LayoutParams layoutParams = new CoordinatorLayout.LayoutParams(CoordinatorLayout.LayoutParams.MATCH_PARENT, CoordinatorLayout.LayoutParams.MATCH_PARENT);
-            coordinatorLayout.addView(fabNotification, layoutParams);
-            fabNotification.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    Toast.makeText(getContext(), "FAB !!!!!", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }*/
+                sendAndPrintResponse();
+            }
+        });
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext());
         layoutManager.setReverseLayout(true);
@@ -187,6 +174,7 @@ public class NotificationFragment extends Fragment {
 
         return view;
     }
+
 
     private void sendAndPrintResponse()
     {
@@ -245,6 +233,8 @@ public class NotificationFragment extends Fragment {
         adapter = new CardAdapter(messageNotifications, this.getContext());
         //Adding adapter to recyclerView
         recyclerView.setAdapter(adapter);
+
+        swipeLayout.setRefreshing(false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

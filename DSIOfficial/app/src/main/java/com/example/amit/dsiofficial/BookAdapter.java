@@ -76,6 +76,10 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>
 
                     //Log.i("ALERT !!", "View " + bookTitleTextView.getText() +" Clicked !!");
                     Intent intent = new Intent(context, BookInfoActivity.class);
+                    if(name.equals(User.getUserName()))
+                        intent.putExtra("MyBook", "true");
+                    else
+                        intent.putExtra("MyBook", "false");
                     intent.putExtra("Title", bookTitleTextView.getText());
                     intent.putExtra("Author", bookAuthorTextView.getText());
                     intent.putExtra("Price", bookPriceTextView.getText());

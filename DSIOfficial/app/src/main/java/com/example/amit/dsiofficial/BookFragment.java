@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -54,12 +55,13 @@ public class BookFragment extends Fragment {
     private String mParam2;
 
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
+    private LinearLayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
     private ArrayList<BookNotification> bookNotifications;
     private JsonArrayRequest jsonArrayRequest;
     private RequestQueue requestQueue;
     String notificationURL = UrlStrings.bookUrl;
+    SwipeRefreshLayout swipeLayout;
 
     private OnFragmentInteractionListener mListener;
 
@@ -101,6 +103,11 @@ public class BookFragment extends Fragment {
             Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
             startActivity(intent);
             getActivity().finish();
+            return true;
+        }
+
+        if(id == R.id.top_book_mybooks){
+            sendAndPrintResponse("myBooks");
             return true;
         }
 
@@ -212,10 +219,20 @@ public class BookFragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewBook);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext());
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
+
+        swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swiperefreshbook);
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                sendAndPrintResponse("");
+            }
+        });
+
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fabBook);
-
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -238,7 +255,7 @@ public class BookFragment extends Fragment {
         requestQueue = VolleySingleton.getInstance(this.getContext()).getRequestQueue(this.getContext());
 
         Log.d("ALERT !!", notificationURL);
-        jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, notificationURL + "?Subject=" + subject, null, new Response.Listener<JSONArray>() {
+        jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, notificationURL + "?Subject=" + subject + "&Name=" + User.getUserName(), null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 Log.i("ALERT !!", response.toString());
@@ -299,6 +316,8 @@ public class BookFragment extends Fragment {
         adapter = new BookAdapter(bookNotifications, this.getContext());
         //Adding adapter to recyclerView
         recyclerView.setAdapter(adapter);
+
+        swipeLayout.setRefreshing(false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -5,29 +5,42 @@
 
     <item
         android:id="@+id/top_book_profile"
-        android:title="Profile" />
+        android:title="Profile"
+        android:letterSpacing="0.3"
+        />
+
+    <item
+        android:id="@+id/top_book_mybooks"
+        android:title="My Books"
+        android:letterSpacing="0.3"
+        />
 
     <item
         android:id="@+id/top_book_settings"
-        android:title="Settings" />
+        android:title="Settings"
+        android:letterSpacing="0.3"/>
 
     <item
         android:id="@+id/top_book_logout"
-        android:title="Log Out" />
+        android:title="Log Out"
+        android:letterSpacing="0.3"/>
 
     <item
-        android:title="Sort by subject"
+        android:title="FILTER"
         app:showAsAction="ifRoom"
         android:id="@+id/sortMenu"
+        android:letterSpacing="0.3"
         >
         <menu>
             <item
                 android:id="@+id/sortMathematics"
-                android:title="Mathematics" />
+                android:title="Mathematics"
+                android:letterSpacing="0.3"/>
 
             <item
                 android:id="@+id/sortPhysics"
-                android:title="Physics" />
+                android:title="Physics"
+                android:letterSpacing="0.3"/>
 
             <item
                 android:id="@+id/sortChemistry"

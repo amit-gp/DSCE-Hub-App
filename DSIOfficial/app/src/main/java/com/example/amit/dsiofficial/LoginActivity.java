@@ -147,13 +147,14 @@ public class LoginActivity extends Activity {
 
     private void parseJsonResponse(JSONObject response)
     {
-        String responseString = "";
+        String responseStringLogin = "", responseStringActivated = "";
         try{
 
-            responseString = response.getString("Login");
+            responseStringActivated = response.getString("Activated");
+            responseStringLogin = response.getString("Login");
         }catch (Exception e){e.printStackTrace();}
 
-        if(responseString.equals("Unsuccessful")){
+        if(responseStringLogin.equals("Unsuccessful")){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Incorrect Credentials")
                     .setCancelable(true)
@@ -166,6 +167,21 @@ public class LoginActivity extends Activity {
             alert.show();
             return;
         }
+
+        if(responseStringActivated.equals("false")){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("This account has not been activated. Please check your email for the link.")
+                    .setCancelable(true)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            //Returns back to previous page
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+            return;
+        }
+
         try {
 
             User.setEmail(response.getString("Email"));

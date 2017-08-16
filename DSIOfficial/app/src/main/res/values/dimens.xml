@@ -4,4 +4,6 @@
     <dimen name="activity_horizontal_margin">10dp</dimen>
     <dimen name="design_fab_size_mini" tools:override="true">50dp</dimen>
     <dimen tools:override="true" name="design_fab_image_size">60dp</dimen>
+    <dimen name="design_bottom_navigation_height" tools:override="true">50dp</dimen>
+    <dimen name="design_bottom_navigation_margin" tools:override="true">5dp</dimen>
 </resources>

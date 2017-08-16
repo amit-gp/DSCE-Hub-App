@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.amit.dsiofficial.BookInfoActivity"
-    android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
     android:orientation="vertical"
     >
 
@@ -13,13 +12,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="16dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Title: "
-            android:textColor="#000"
-            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/infoTitle"
@@ -252,8 +244,8 @@
             android:orientation="horizontal"
             android:paddingRight="60dp"
             android:paddingLeft="60dp"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
+            android:paddingBottom="1dp"
+            android:paddingTop="1dp"
             >
 
             <TextView

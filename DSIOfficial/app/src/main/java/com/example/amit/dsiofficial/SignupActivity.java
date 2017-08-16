@@ -57,6 +57,11 @@ public class SignupActivity extends Activity {
             @Override
             public void onClick(View view) {
 
+                if(phoneEditText.getText().toString().length() != 10){
+
+                    showWrongPhone();
+                    return;
+                }
                 sendAndPrintResponse();
             }
         });
@@ -77,10 +82,11 @@ public class SignupActivity extends Activity {
         //Showing a progress dialog
         final ProgressDialog loading = ProgressDialog.show(this,"Loading Data", "Please wait...",false,false);
         requestQueue = VolleySingleton.getInstance(this).getRequestQueue(this);
+
         JSONObject loginJsonObject = null;
         try {
 
-            loginJsonObject = new JSONObject().put("Email", emailEditText.getText()).put("Password", passwordEditText.getText()).put("ContactNumber", phoneEditText.getText()).put("Name", userNameEditText.getText()).put("Admin", "false");
+            loginJsonObject = new JSONObject().put("Email", emailEditText.getText()).put("Password", passwordEditText.getText()).put("ContactNumber", phoneEditText.getText()).put("Name", userNameEditText.getText()).put("Admin", "false").put("Activated", "false");
         }catch (Exception e){e.printStackTrace();}
 
         jsonLoginRequest = new JsonObjectRequest(Request.Method.POST, loginURL, loginJsonObject, new Response.Listener<JSONObject>() {
@@ -115,34 +121,36 @@ public class SignupActivity extends Activity {
         try{
 
             responseString = response.getString("Login");
-        }catch (Exception e){e.printStackTrace();}
+        }catch (Exception e) {
+            e.printStackTrace();}
 
         if(responseString.equals("Unsuccessful")){
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Email ID already exists !")
-                    .setCancelable(true)
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            //Returns back to previous page
-                        }
-                    });
-            AlertDialog alert = builder.create();
-            alert.show();
+            Toast.makeText(this, "Email ID already exists !", Toast.LENGTH_SHORT).show();
             return;
         }
         try {
 
+            showEmailSent();
             User.setEmail(response.getString("Email"));
             User.setPassword(response.getString("Password"));
             User.setPhoneNum(response.getString("ContactNumber"));
             User.setUserName(response.getString("Name"));
             User.setIsAdmin(Boolean.parseBoolean(response.getString("Admin")));
-            Toast.makeText(this, response.getString("Email"), Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+            showEmailSent();
+            Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
             User.setIsLoggedin(true);
             startActivity(intent);
             finish();
 
         }catch (Exception e){e.printStackTrace();}
+    }
+
+    private void showWrongPhone(){
+        Toast.makeText(this, "Please enter a valid Phone Number.", Toast.LENGTH_SHORT).show();
+    }
+
+    private void showEmailSent(){
+
+        Toast.makeText(this, "A conformation link has been sent to your email ID. Please Log In after conforming your identity.", Toast.LENGTH_SHORT).show();
     }
 }
