@@ -6,18 +6,18 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.webkit.MimeTypeMap;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
@@ -38,8 +38,9 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,8 +49,6 @@ import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 
-import static android.R.attr.data;
-
 public class PostNotificationActivity extends Activity {
 
     private TextView title, description, submit;
@@ -57,7 +56,7 @@ public class PostNotificationActivity extends Activity {
     private RequestQueue requestQueue;
     String notifUrl = UrlStrings.notificationUrl;
     String notifAttachUrl = UrlStrings.notificationAttachmentUrl;
-    private ImageButton attachButton, documentFileButton, imageFileButton, cameraFileButton;
+    private ImageButton attachButton, cameraFileButton;
     private PopupWindow popupWindow;
     private LayoutInflater layoutInflater;
     private RelativeLayout relativeLayout;
@@ -65,6 +64,7 @@ public class PostNotificationActivity extends Activity {
     private String absoluteFileChosen;
     private TextView fileChosenTextView;
     private String finalFileName;
+    private int REQUEST_CODE = 1;
     //private ArrayList<String> selectedDocs;
     //private ArrayList<String> photoPaths;
 
@@ -74,13 +74,14 @@ public class PostNotificationActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_notification);
 
-
+        cameraFileButton = (ImageButton) findViewById(R.id.cameraButton);
         fileChosenTextView = (TextView) findViewById(R.id.fileChosenTextView);
         relativeLayout = (RelativeLayout) findViewById(R.id.post_relative_layout);
         title = (TextView) findViewById(R.id.newNotifTitle);
         description = (TextView) findViewById(R.id.newNotifDescription);
         submit = (TextView) findViewById(R.id.submitNotifTextView);
         attachButton = (ImageButton) findViewById(R.id.attachButton);
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,7 +97,6 @@ public class PostNotificationActivity extends Activity {
                     Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
-
 
                             String content_type  = getMimeType(fileChosen.getPath());
                             RequestBody file_body = RequestBody.create(MediaType.parse(content_type),fileChosen);
@@ -145,7 +145,49 @@ public class PostNotificationActivity extends Activity {
 
     }
 
+    String mCurrentPhotoPath;
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
+
     private void enableAttachButton() {
+
+        cameraFileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if(intent.resolveActivity(getPackageManager()) != null){
+
+                    File photoFile = null;
+                    try {
+                        photoFile = createImageFile();
+                    } catch (IOException ex) {
+                        // Error occurred while creating the File
+                    }
+                    // Continue only if the File was successfully created
+                    if (photoFile != null) {
+                        Uri photoURI = FileProvider.getUriForFile(getApplicationContext(),
+                                "com.example.amit.dsiofficial",
+                                photoFile);
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                        startActivityForResult(intent, REQUEST_CODE);
+                    }
+                }
+            }
+        });
 
         attachButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,6 +209,18 @@ public class PostNotificationActivity extends Activity {
             absoluteFileChosen = file_path.substring(file_path.lastIndexOf("/")+1);
             fileChosenTextView.setText(absoluteFileChosen);
             finalFileName = Long.toString(Calendar.getInstance().getTimeInMillis());
+        }
+
+        if(requestCode == REQUEST_CODE && resultCode == RESULT_OK){
+
+            Log.d("ALERT !!", "All good");
+            fileChosen = new File(mCurrentPhotoPath);
+            String file_path = fileChosen.getAbsolutePath();
+            absoluteFileChosen = file_path.substring(file_path.lastIndexOf("/")+1);
+            fileChosenTextView.setText(absoluteFileChosen);
+            finalFileName = Long.toString(Calendar.getInstance().getTimeInMillis());
+            //title.setText(mCurrentPhotoPath);
+
         }
     }
 
