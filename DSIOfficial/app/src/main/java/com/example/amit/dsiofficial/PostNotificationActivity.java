@@ -86,6 +86,11 @@ public class PostNotificationActivity extends Activity {
             @Override
             public void onClick(View view) {
 
+                if(title.getText().equals("")){
+                    Toast.makeText(PostNotificationActivity.this, "Cannot leave title empty.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 if(fileChosen != null){
 
                     //final ProgressDialog progress = new ProgressDialog(PostNotificationActivity.this);
