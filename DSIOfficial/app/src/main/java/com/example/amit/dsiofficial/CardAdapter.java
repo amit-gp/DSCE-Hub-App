@@ -30,9 +30,14 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         MessageNotification notification = messageNotifications.get(position);
-        //String notificationMessageHint = notification.getNotificationTitle().substring(0, 25) + "...";
+        String notificationMessageHint = notification.getGetNotificationBody();
+        if (notification.getGetNotificationBody().length() > 99){
+            notificationMessageHint = notification.getGetNotificationBody().substring(0, 100) + "....";
+        }
+
         holder.messageTitleTextView.setText(notification.getNotificationTitle());
-        holder.messageBodyTextView.setText(notification.getGetNotificationBody());
+        holder.messageBodyTextView.setText(notificationMessageHint);
+        holder.body = notification.getGetNotificationBody();
 
         holder.hasAttachment = messageNotifications.get(position).getHasAttachment();
         if(messageNotifications.get(position).getHasAttachment().equals("true")){
@@ -58,7 +63,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
         private TextView messageTitleTextView;
         private TextView messageBodyTextView;
-        private String hasAttachment, attachmentName, attachmentType;
+        private String hasAttachment, attachmentName, attachmentType, body;
 
         public ViewHolder(View view){
             super(view);
@@ -74,6 +79,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
                     intent.putExtra("hasAttachment", hasAttachment);
                     intent.putExtra("attachmentName", attachmentName);
                     intent.putExtra("attachmentType", attachmentType);
+                    intent.putExtra("messageTitle", messageTitleTextView.getText());
+                    intent.putExtra("message", body);
                     context.startActivity(intent);
                 }
             });
