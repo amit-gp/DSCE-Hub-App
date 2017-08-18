@@ -14,7 +14,35 @@ public class MessageNotification{
     private String notificationTitle;
     private String getNotificationBody;
     private Date dateUploaded;
+    private String hasAttachment, attachmentName, attachmentType;
 
+    public void setGetNotificationBody(String getNotificationBody) {
+        this.getNotificationBody = getNotificationBody;
+    }
+
+    public String getHasAttachment() {
+        return hasAttachment;
+    }
+
+    public void setHasAttachment(String hasAttachment) {
+        this.hasAttachment = hasAttachment;
+    }
+
+    public String getAttachmentName() {
+        return attachmentName;
+    }
+
+    public void setAttachmentName(String attachmentName) {
+        this.attachmentName = attachmentName;
+    }
+
+    public String getAttachmentType() {
+        return attachmentType;
+    }
+
+    public void setAttachmentType(String attachmentType) {
+        this.attachmentType = attachmentType;
+    }
 
     public String getNotificationTitle() {
         return notificationTitle;

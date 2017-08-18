@@ -5,7 +5,7 @@ android {
     buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "com.example.amit.dsiofficial"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -26,6 +26,14 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+    repositories {
+        maven {
+            url "http://dl.bintray.com/lukaville/maven"
+        }
+    }
+
+
+
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
     compile 'com.android.support:cardview-v7:26.0.0-alpha1'
     compile 'com.android.support:design:26.0.0-alpha1'
@@ -34,5 +42,7 @@ dependencies {
     compile 'com.android.volley:volley:1.0.0'
     compile 'com.android.support:support-vector-drawable:26.+'
     compile 'com.android.support:support-v4:26.+'
+    compile 'com.squareup.okhttp3:okhttp:3.3.1'
+    compile 'com.nbsp:library:1.09'
     testCompile 'junit:junit:4.12'
 }

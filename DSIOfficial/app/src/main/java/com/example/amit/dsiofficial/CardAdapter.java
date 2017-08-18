@@ -34,6 +34,12 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
         holder.messageTitleTextView.setText(notification.getNotificationTitle());
         holder.messageBodyTextView.setText(notification.getGetNotificationBody());
 
+        holder.hasAttachment = messageNotifications.get(position).getHasAttachment();
+        if(messageNotifications.get(position).getHasAttachment().equals("true")){
+            holder.attachmentName = messageNotifications.get(position).getAttachmentName();
+            holder.attachmentType = messageNotifications.get(position).getAttachmentType();
+        }
+
     }
 
     @Override
@@ -52,6 +58,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
         private TextView messageTitleTextView;
         private TextView messageBodyTextView;
+        private String hasAttachment, attachmentName, attachmentType;
 
         public ViewHolder(View view){
             super(view);
@@ -63,8 +70,11 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
                 public void onClick(View view) {
 
                     Log.i("ALERT !!", "View " + messageTitleTextView.getText() +" Clicked !!");
-                    Intent intent = new Intent();
-
+                    Intent intent = new Intent(context, NotificationInfoActivity.class);
+                    intent.putExtra("hasAttachment", hasAttachment);
+                    intent.putExtra("attachmentName", attachmentName);
+                    intent.putExtra("attachmentType", attachmentType);
+                    context.startActivity(intent);
                 }
             });
         }

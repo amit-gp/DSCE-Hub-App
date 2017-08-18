@@ -3,6 +3,8 @@
     package="com.example.amit.dsiofficial">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -23,7 +25,8 @@
         <activity android:name=".NewBookActivity" />
         <activity android:name=".BookInfoActivity" />
         <activity android:name=".PostNotificationActivity" />
-        <activity android:name=".MyProfileActivity"></activity>
+        <activity android:name=".MyProfileActivity" />
+        <activity android:name=".NotificationInfoActivity"></activity>
     </application>
 
 </manifest>

@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             User.setPassword(sp1.getString("Password", null));
             User.setPhoneNum(sp1.getString("PhoneNum", null));
             User.setEmail(sp1.getString("Email", null));
+            User.setIsAdmin(sp1.getBoolean("isAdmin", false));
             User.setIsLoggedin(true);
         }
 

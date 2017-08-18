@@ -19,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -206,20 +207,13 @@ public class NotificationFragment extends Fragment {
 
     private void addRefreshGui()
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
-        builder.setMessage("Could not connect to Database.")
-                .setCancelable(false)
-                .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        sendAndPrintResponse();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
+        Toast.makeText(getContext(), "Could not connect to Database.\nSwipe down to refresh.", Toast.LENGTH_LONG).show();
+        swipeLayout.setRefreshing(false);
     }
 
     private void parseJsonArrayResponse(JSONArray jsonArray)
     {
+        messageNotifications.clear();
         for (int i = 0; i < jsonArray.length(); i++)
         {
             MessageNotification messageNotification = new MessageNotification();
@@ -228,6 +222,11 @@ public class NotificationFragment extends Fragment {
                 jsonObject = jsonArray.getJSONObject(i);
                 messageNotification.setNotificationTitle(jsonObject.getString("messageTitle"));
                 messageNotification.setNotificationBody(jsonObject.getString("message"));
+                messageNotification.setHasAttachment(jsonObject.getString("hasAttachment"));
+                if(messageNotification.getHasAttachment().equals("true")){
+                    messageNotification.setAttachmentName(jsonObject.getString("attachmentName"));
+                    messageNotification.setAttachmentType(jsonObject.getString("attachmentType"));
+                }
             }catch (Exception e){e.printStackTrace();}
             messageNotifications.add(messageNotification);
         }
@@ -236,7 +235,6 @@ public class NotificationFragment extends Fragment {
         adapter = new CardAdapter(messageNotifications, this.getContext());
         //Adding adapter to recyclerView
         recyclerView.setAdapter(adapter);
-
         swipeLayout.setRefreshing(false);
     }
 

@@ -20,6 +20,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -280,16 +281,8 @@ public class BookFragment extends Fragment {
 
     private void addRefreshGui()
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
-        builder.setMessage("Could not connect to Database.")
-                .setCancelable(false)
-                .setPositiveButton("Refresh", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        sendAndPrintResponse("");
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
+        Toast.makeText(getContext(), "Could not connect to Database.\nSwipe down to refresh.", Toast.LENGTH_LONG).show();
+        swipeLayout.setRefreshing(false);
     }
 
     private void parseJsonArrayResponse(JSONArray jsonArray)
