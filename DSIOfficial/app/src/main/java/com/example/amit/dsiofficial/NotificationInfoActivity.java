@@ -6,11 +6,11 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -26,6 +26,7 @@ public class NotificationInfoActivity extends AppCompatActivity {
     private static String TAG = "PermissionDemo";
     private static final int REQUEST_WRITE_STORAGE = 112;
     private LinearLayout linearLayout;
+    private LinearLayout.LayoutParams layoutParams;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +37,8 @@ public class NotificationInfoActivity extends AppCompatActivity {
 
 
         button = new Button(this);
-        //button.setText("Download");
-        button.setBackgroundResource(R.drawable.ic_attach_file);
-
+        //button.setBackgroundResource(R.drawable.popupbg_big);
+        layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         title = (TextView) findViewById(R.id.title_notif_info);
         description = (TextView) findViewById(R.id.desc_notif_info);
 
@@ -50,9 +50,10 @@ public class NotificationInfoActivity extends AppCompatActivity {
 
         if(hasAttachment.equals("true")){
 
-            linearLayout.addView(button);
+            linearLayout.addView(button, layoutParams);
             attachmentName = extras.getString("attachmentName");
             attachmentType = extras.getString("attachmentType");
+            button.setText("Download attached file (" + attachmentType + ")");
         }
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
