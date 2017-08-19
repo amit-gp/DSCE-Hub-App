@@ -19,9 +19,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,6 +69,7 @@ public class PostNotificationActivity extends AppCompatActivity {
     private String finalFileName;
     private int REQUEST_CODE = 1;
     public boolean isUploaded = false;
+    private String year;
     //private ArrayList<String> selectedDocs;
     //private ArrayList<String> photoPaths;
 
@@ -82,6 +86,31 @@ public class PostNotificationActivity extends AppCompatActivity {
         description = (TextView) findViewById(R.id.newNotifDescription);
         submit = (TextView) findViewById(R.id.submitNotifTextView);
         attachButton = (ImageButton) findViewById(R.id.attachButton);
+
+        Spinner spinner = (Spinner) findViewById(R.id.yearSpinnerPostNotif);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.years_array_post, R.layout.spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                year = (String) adapterView.getItemAtPosition(i);
+                if(year.equals("All years")){
+                    year = "college";
+                }
+                //Toast.makeText(NewBookActivity.this, subject, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -279,7 +308,7 @@ public class PostNotificationActivity extends AppCompatActivity {
 
             Log.d("ALERT !!", title.getText().toString());
 
-            loginJsonObject = new JSONObject().put("messageTitle", title.getText()).put("message", description.getText()).put("messageLevel", "college");  //----------HARDCODED VALUE !!!!!!--------------
+            loginJsonObject = new JSONObject().put("messageTitle", title.getText()).put("message", description.getText()).put("messageLevel", year);  //----------HARDCODED VALUE !!!!!!--------------
             if(fileChosen == null){
                 loginJsonObject.put("hasAttachment", "false");
             }
