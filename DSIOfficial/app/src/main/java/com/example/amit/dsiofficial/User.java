@@ -13,6 +13,15 @@ public class User {
     private static String phoneNum;
     private static Boolean isLoggedin = false;
     private static Boolean isAdmin = false;
+    private static String year;
+
+    public static String getYear() {
+        return year;
+    }
+
+    public static void setYear(String year) {
+        User.year = year;
+    }
 
     public static Boolean getIsAdmin() {
         return isAdmin;

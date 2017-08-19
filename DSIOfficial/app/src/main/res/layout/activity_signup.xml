@@ -10,18 +10,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:paddingLeft="60dp"
-        android:paddingRight="60dp">
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             >
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="16dp">
+                android:paddingLeft="16dp"
+                android:paddingTop="24dp"
+                android:paddingBottom="8dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Year: "
+                    android:textSize="17dp"
+                    android:textColor="#fff"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    />
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:layout_width="match_parent"
+                    android:id="@+id/yearSpinner"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"> </android.support.v7.widget.AppCompatSpinner>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="60dp"
+                >
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -129,6 +163,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#4a5a71"></LinearLayout>
+
+
+
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -162,43 +199,5 @@
             android:textColor="#000000"
             android:letterSpacing="0.1"/>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_marginBottom="400dp"
-        android:orientation="horizontal"
-        >
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="0.34"
-            android:padding="17dp"
-            android:src="@drawable/dsi_logo" />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingRight="60dp"
-            >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dayananda Sagar"
-                android:textSize="24dp"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textSize="17dp"
-                android:text="College of Engineering"
-                />
-
-        </LinearLayout>
-
-    </LinearLayout>
 </RelativeLayout>

@@ -1,7 +1,6 @@
 package com.example.amit.dsiofficial;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +14,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,7 +49,7 @@ import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 
-public class PostNotificationActivity extends Activity {
+public class PostNotificationActivity extends AppCompatActivity {
 
     private TextView title, description, submit;
     private JsonObjectRequest jsonObjectRequest;
@@ -65,6 +65,7 @@ public class PostNotificationActivity extends Activity {
     private TextView fileChosenTextView;
     private String finalFileName;
     private int REQUEST_CODE = 1;
+    public boolean isUploaded = false;
     //private ArrayList<String> selectedDocs;
     //private ArrayList<String> photoPaths;
 
@@ -125,6 +126,8 @@ public class PostNotificationActivity extends Activity {
                                     throw new IOException("Error : "+response);
                                 }
 
+                                Toast.makeText(PostNotificationActivity.this, "File uploaded", Toast.LENGTH_SHORT).show();
+                                isUploaded = true;
                                 //progress.dismiss();
 
                             } catch (IOException e) {
@@ -302,6 +305,7 @@ public class PostNotificationActivity extends Activity {
                 loading.dismiss();
                 error.printStackTrace();
                 Log.i("ALERT ERROR!!", error.toString());
+                finish();
             }
         }){
             @Override

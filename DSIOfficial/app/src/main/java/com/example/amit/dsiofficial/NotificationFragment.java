@@ -2,14 +2,12 @@ package com.example.amit.dsiofficial;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -182,11 +180,13 @@ public class NotificationFragment extends Fragment {
 
     private void sendAndPrintResponse()
     {
+
+        String modifiedUrl = notificationURL + "?level=" + User.getYear();
         //Showing a progress dialog
         final ProgressDialog loading = ProgressDialog.show(this.getContext(),"Loading Data", "Please wait...",false,false);
         requestQueue = VolleySingleton.getInstance(this.getContext()).getRequestQueue(this.getContext());
 
-        jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, notificationURL, null, new Response.Listener<JSONArray>() {
+        jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, modifiedUrl, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 Log.i("ALERT !!", response.toString());

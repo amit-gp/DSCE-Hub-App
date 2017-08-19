@@ -39,6 +39,7 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         loginTextView = (TextView) findViewById(R.id.lin);
         forgotPasswordTextView = (TextView) findViewById(R.id.forgotPassword);
         emailEditText = (EditText) findViewById(R.id.mail);
@@ -91,6 +92,8 @@ public class LoginActivity extends Activity {
             }
         });
     }
+
+
 
     private void sendAndPrintResponse()
     {
