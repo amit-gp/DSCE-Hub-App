@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             User.setPhoneNum(sp1.getString("PhoneNum", null));
             User.setEmail(sp1.getString("Email", null));
             User.setIsAdmin(sp1.getBoolean("isAdmin", false));
+            User.setYear(sp1.getString("year", null));
             User.setIsLoggedin(true);
         }
 

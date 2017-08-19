@@ -180,8 +180,14 @@ public class NotificationFragment extends Fragment {
 
     private void sendAndPrintResponse()
     {
+        String modifiedUrl;
 
-        String modifiedUrl = notificationURL + "?level=" + User.getYear();
+        if(User.getIsAdmin()){
+            modifiedUrl = notificationURL + "?year=admin";
+        }
+        else {
+            modifiedUrl = notificationURL + "?year=" + User.getYear();
+        }
         //Showing a progress dialog
         final ProgressDialog loading = ProgressDialog.show(this.getContext(),"Loading Data", "Please wait...",false,false);
         requestQueue = VolleySingleton.getInstance(this.getContext()).getRequestQueue(this.getContext());

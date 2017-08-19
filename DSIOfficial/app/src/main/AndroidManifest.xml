@@ -12,9 +12,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/dsce_hub_logo"
+        android:icon="@drawable/hub_logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/dsce_hub_logo"
+        android:roundIcon="@drawable/hub_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
