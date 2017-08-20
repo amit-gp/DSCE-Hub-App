@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.amit.dsiofficial.AboutUsActivity"
+    tools:showIn="@layout/activity_about_us">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Version: "
+            android:textColor="#000"
+            android:textSize="12dp"
+            android:letterSpacing="0.2"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="1.x.x"
+            android:textColor="#000"
+            android:textSize="12dp"
+            android:letterSpacing="0.2"
+            android:id="@+id/versionTextView"
+            />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#b3b3b3"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact us: "
+                android:textColor="#000"
+                android:textSize="12dp"
+                android:letterSpacing="0.2"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="theamit97@gmail.com\n\nataago7@gmail.com"
+                android:textColor="#000"
+                android:textSize="12dp"
+                android:autoLink="all"
+                android:letterSpacing="0.2"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#b3b3b3"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="12dp"
+                android:letterSpacing="0.2"
+                android:text="Lead Programmer: " />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amit Kumar Gupta\n+91 9900086761"
+                android:textColor="#000"
+                android:textSize="12dp"
+                android:autoLink="all"
+                android:letterSpacing="0.2"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#b3b3b3"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="12dp"
+                android:letterSpacing="0.2"
+                android:text="Designer: " />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ataaur Mohommed Rahaman\n+91 9740165675"
+                android:textColor="#000"
+                android:textSize="12dp"
+                android:autoLink="all"
+                android:letterSpacing="0.2"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#b3b3b3"></LinearLayout>
+
+    </LinearLayout>
+
+
+
+</android.support.v4.widget.NestedScrollView>

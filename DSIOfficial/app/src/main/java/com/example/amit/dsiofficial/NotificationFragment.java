@@ -98,6 +98,11 @@ public class NotificationFragment extends Fragment {
             startActivity(intent);
         }
 
+        if(id == R.id.top_navigation_about){
+            Intent intent = new Intent(getActivity(), AboutUsActivity.class);
+            startActivity(intent);
+        }
+
         if(id == R.id.top_navigation_logout) {
             //Toast.makeText(this, "DSH BRD", Toast.LENGTH_LONG).show();
             User.setIsLoggedin(false);

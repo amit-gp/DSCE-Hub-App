@@ -18,34 +18,7 @@
             android:orientation="vertical"
             >
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="16dp"
-                android:paddingTop="24dp"
-                android:paddingBottom="8dp"
-                >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Year: "
-                    android:textSize="17dp"
-                    android:textColor="#fff"
-                    android:paddingTop="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingLeft="10dp"
-                    />
-
-                <android.support.v7.widget.AppCompatSpinner
-                    android:layout_width="match_parent"
-                    android:id="@+id/yearSpinner"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"> </android.support.v7.widget.AppCompatSpinner>
-
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -164,7 +137,34 @@
                 android:layout_height="1dp"
                 android:background="#4a5a71"></LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingTop="24dp"
+                android:paddingBottom="8dp"
+                >
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Year: "
+                    android:textSize="17dp"
+                    android:textColor="#fff"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    />
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:layout_width="match_parent"
+                    android:id="@+id/yearSpinner"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"> </android.support.v7.widget.AppCompatSpinner>
+
+
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

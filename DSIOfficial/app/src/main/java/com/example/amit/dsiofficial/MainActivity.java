@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     //private StringRequest stringRequest;
     private TextView messageTextView;
 
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
