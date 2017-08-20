@@ -37,6 +37,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
         holder.messageTitleTextView.setText(notification.getNotificationTitle());
         holder.messageBodyTextView.setText(notificationMessageHint);
+        holder.dateUploadedTextView.setText(notification.getDateUploaded());
         holder.body = notification.getGetNotificationBody();
 
         holder.hasAttachment = messageNotifications.get(position).getHasAttachment();
@@ -63,12 +64,14 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
         private TextView messageTitleTextView;
         private TextView messageBodyTextView;
+        private TextView dateUploadedTextView;
         private String hasAttachment, attachmentName, attachmentType, body;
 
         public ViewHolder(View view){
             super(view);
             messageTitleTextView = (TextView) view.findViewById(R.id.messageTitleTextView);
             messageBodyTextView = (TextView) view.findViewById(R.id.messageBodyTextView);
+            dateUploadedTextView = (TextView) view.findViewById(R.id.date_uploaded);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -79,6 +82,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
                     intent.putExtra("hasAttachment", hasAttachment);
                     intent.putExtra("attachmentName", attachmentName);
                     intent.putExtra("attachmentType", attachmentType);
+                    intent.putExtra("dateUploaded", dateUploadedTextView.getText());
                     intent.putExtra("messageTitle", messageTitleTextView.getText());
                     intent.putExtra("message", body);
                     context.startActivity(intent);

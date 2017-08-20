@@ -229,6 +229,7 @@ public class NotificationFragment extends Fragment {
                 messageNotification.setNotificationTitle(jsonObject.getString("messageTitle"));
                 messageNotification.setNotificationBody(jsonObject.getString("message"));
                 messageNotification.setHasAttachment(jsonObject.getString("hasAttachment"));
+                messageNotification.setDateUploaded(jsonObject.getString("DatePosted"));
                 if(messageNotification.getHasAttachment().equals("true")){
                     messageNotification.setAttachmentName(jsonObject.getString("attachmentName"));
                     messageNotification.setAttachmentType(jsonObject.getString("attachmentType"));
@@ -236,6 +237,18 @@ public class NotificationFragment extends Fragment {
             }catch (Exception e){e.printStackTrace();}
             messageNotifications.add(messageNotification);
         }
+
+        NotificationManager.numberOfNotifications = messageNotifications.size();
+
+        Intent serviceIntent = new Intent(getActivity(), ServerHeartbeatService.class);
+        serviceIntent.putExtra("num", messageNotifications.size());
+        serviceIntent.putExtra("year", User.getYear());
+        SharedPreferences p = getActivity().getSharedPreferences("Login", MODE_PRIVATE);
+        SharedPreferences.Editor Ed= p.edit();
+        Ed.putInt("num", messageNotifications.size());
+        Ed.putString("year", User.getYear());
+        Ed.commit();
+        getActivity().startService(serviceIntent);
 
         //Finally initializing our adapter
         adapter = new CardAdapter(messageNotifications, this.getContext());

@@ -161,7 +161,6 @@ public class SignupActivity extends Activity {
             User.setPhoneNum(response.getString("ContactNumber"));
             User.setUserName(response.getString("Name"));
             User.setIsAdmin(Boolean.parseBoolean(response.getString("Admin")));
-            showEmailSent();
             Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
             User.setIsLoggedin(true);
             startActivity(intent);
@@ -176,6 +175,6 @@ public class SignupActivity extends Activity {
 
     private void showEmailSent(){
 
-        Toast.makeText(this, "A conformation link has been sent to your email ID. Please Log In after conforming your identity.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "A conformation link has been sent to your email ID. Please Log In after conforming your identity.", Toast.LENGTH_LONG).show();
     }
 }

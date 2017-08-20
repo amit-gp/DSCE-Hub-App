@@ -26,18 +26,33 @@
                 android:text="Message Title"
                 android:textSize="22sp"
                 android:textColor="@color/messageHeadingColour"
-                android:layout_margin="10dp"/>
+                android:layout_margin="9dp"/>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/messageBodyTextView"
                 android:text="Message Body"
                 android:textColor="@color/messageDescriptionColour"
                 android:textSize="17sp"
-                android:layout_margin="10dp"
-
+                android:layout_margin="9dp"
                 />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="2017/5/17"
+                    android:id="@+id/date_uploaded"
+                    android:padding="10dp"
+                    android:textAlignment="textEnd"
+                    />
+
+            </LinearLayout>
 
         </LinearLayout>
 

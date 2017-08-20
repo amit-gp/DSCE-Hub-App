@@ -88,20 +88,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        // -------CLIPBOARD
-        /*
-        SharedPreferences sp=getSharedPreferences("Login", MODE_PRIVATE);
-        SharedPreferences.Editor Ed=sp.edit();
-        Ed.putString("Name",User.getUserName() );
-        Ed.putString("Password",User.getPassword());
-        Ed.putString("Email", User.getEmail());
-        Ed.putString("PhoneNum", User.getPhoneNum());
-        Ed.putBoolean("isLoggedIn", User.getIsLoggedin());
-        Ed.commit();
-        */
-
-        // -------CLIPBOARD
-
         Log.i("ALERT !!", "STARTED !!!!!");
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

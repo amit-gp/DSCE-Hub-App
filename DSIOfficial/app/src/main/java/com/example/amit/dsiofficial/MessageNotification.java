@@ -1,10 +1,5 @@
 package com.example.amit.dsiofficial;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import java.util.Date;
-
 /**
  * Created by Amit on 10-08-2017.
  */
@@ -13,7 +8,7 @@ public class MessageNotification{
 
     private String notificationTitle;
     private String getNotificationBody;
-    private Date dateUploaded;
+    private String dateUploaded;
     private String hasAttachment, attachmentName, attachmentType;
 
     public void setGetNotificationBody(String getNotificationBody) {
@@ -60,12 +55,11 @@ public class MessageNotification{
         this.getNotificationBody = getNotificationBody;
     }
 
-
-    public Date getDateUploaded() {
+    public String getDateUploaded() {
         return dateUploaded;
     }
 
-    public void setDateUploaded(Date dateUploaded) {
+    public void setDateUploaded(String dateUploaded) {
         this.dateUploaded = dateUploaded;
     }
 }

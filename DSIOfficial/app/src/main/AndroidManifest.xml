@@ -42,6 +42,11 @@
         <activity android:name=".PostNotificationActivity" />
         <activity android:name=".MyProfileActivity" />
         <activity android:name=".NotificationInfoActivity"></activity>
+        
+        <service android:name=".ServerHeartbeatService"
+            android:exported = "false">
+        </service>
+        
     </application>
 
 </manifest>
