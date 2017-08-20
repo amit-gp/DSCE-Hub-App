@@ -98,7 +98,7 @@ public class ServerHeartbeatService extends Service {
 
                     NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                     notificationManager.notify(0, mBuilder.build());
-                    count++;
+                    count = Integer.parseInt(response.getString("Count"));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
