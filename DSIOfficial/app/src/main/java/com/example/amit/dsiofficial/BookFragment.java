@@ -2,7 +2,6 @@ package com.example.amit.dsiofficial;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -10,7 +9,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -92,6 +90,11 @@ public class BookFragment extends Fragment {
 
         if(id == R.id.top_book_profile){
             Intent intent = new Intent(getActivity(), MyProfileActivity.class);
+            startActivity(intent);
+        }
+
+        if(id == R.id.top_book_about){
+            Intent intent = new Intent(getActivity(), AboutUsActivity.class);
             startActivity(intent);
         }
 

@@ -9,7 +9,6 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
-
     <uses-feature android:name="android.hardware.screen.portrait" />
 
     <application
@@ -19,7 +18,9 @@
         android:roundIcon="@drawable/hub_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -31,13 +32,27 @@
                 android:resource="@xml/paths" />
         </provider>
 
-        <activity android:name=".LoginActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".SignupActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".NewBookActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".BookInfoActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".PostNotificationActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".MyProfileActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".NotificationInfoActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SignupActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NewBookActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BookInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PostNotificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NotificationInfoActivity"
+            android:screenOrientation="portrait" />
 
         <service
             android:name=".ServerHeartbeatService"
@@ -55,7 +70,8 @@
             android:name=".AboutUsActivity"
             android:label="@string/title_activity_about_us"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"> </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".ChooseSectionActivity"></activity>
     </application>
 
 </manifest>

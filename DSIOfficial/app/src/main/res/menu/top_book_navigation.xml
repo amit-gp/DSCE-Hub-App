@@ -16,8 +16,8 @@
         />
 
     <item
-        android:id="@+id/top_book_settings"
-        android:title="Settings"
+        android:id="@+id/top_book_about"
+        android:title="About Us"
         android:letterSpacing="0.3"/>
 
     <item

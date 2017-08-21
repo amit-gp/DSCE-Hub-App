@@ -138,7 +138,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ataaur Mohommed Rahaman\n+91 9740165675"
+                android:text="Mohammed Ataaur Rahaman\n+91 9740165675"
                 android:textColor="#000"
                 android:textSize="12dp"
                 android:autoLink="all"

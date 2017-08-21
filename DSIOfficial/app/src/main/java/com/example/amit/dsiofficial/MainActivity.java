@@ -15,8 +15,8 @@ import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,11 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.navigation_time_table:
                     //Log.i("ALERT !!", "dash CLICKED");
-                    SharedPreferences sp1= getSharedPreferences("Login", MODE_PRIVATE);
-                    Boolean test = sp1.getBoolean("isFirstTimeTable", false);
-                    if(test){
-                        PopupWindow popupWindow = new PopupWindow(getApplicationContext());
-                    }
                     fragmentTransaction.replace(R.id.notificationFrame, new TimeTableFragment()).commit();
                     return true;
             }
@@ -73,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Bundle bundle = getIntent().getExtras();
+        if(getIntent().hasExtra("fromChooseSection")) {
+            if (bundle.getBoolean("fromChooseSection")) {
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.notificationFrame, new TimeTableFragment()).commit();
+                Toast.makeText(this, "Time Table changed", Toast.LENGTH_SHORT).show();
+            }
+        }
         SharedPreferences sp1=this.getSharedPreferences("Login", MODE_PRIVATE);
         Boolean test = sp1.getBoolean("isLoggedIn", false);
         Log.i("ALERT !!", test.toString());

@@ -213,6 +213,7 @@ public class LoginActivity extends Activity {
             Ed.putString("PhoneNum", User.getPhoneNum());
             Ed.putBoolean("isLoggedIn", User.getIsLoggedin());
             Ed.putBoolean("isAdmin", User.getIsAdmin());
+            
             Ed.commit();
 
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);

@@ -1,11 +1,15 @@
 package com.example.amit.dsiofficial;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -58,6 +62,39 @@ public class TimeTableFragment extends Fragment {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if(id == R.id.top_time_change_section){
+            Intent intent = new Intent(getActivity(), ChooseSectionActivity.class);
+            startActivity(intent);
+        }
+
+        if(id == R.id.top_time__about){
+            Intent intent = new Intent(getActivity(), AboutUsActivity.class);
+            startActivity(intent);
+        }
+
+        if(id == R.id.top_time__logout) {
+            //Toast.makeText(this, "DSH BRD", Toast.LENGTH_LONG).show();
+            User.setIsLoggedin(false);
+            User.removeAllCredentials();
+
+            SharedPreferences sp= getActivity().getSharedPreferences("Login", MODE_PRIVATE);
+            SharedPreferences.Editor Ed=sp.edit();
+            Ed.putBoolean("isLoggedIn", false);
+            Ed.commit();
+
+            Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+            getActivity().finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
@@ -67,15 +104,47 @@ public class TimeTableFragment extends Fragment {
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.top_time_table_nav, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        setHasOptionsMenu(true);
         SharedPreferences sp1 = getActivity().getSharedPreferences("Login", MODE_PRIVATE);
-        Boolean test = sp1.getBoolean("isFirstTimeTable", false);
-        // Inflate the layout for this fragment
+        Boolean isFirstTimeTable = sp1.getBoolean("isFirstTimeTable", false);
+        User.setClassChosen(sp1.getString("yearChosen", "CSE 3A"));
+        //Default view
         View view = inflater.inflate(R.layout.fragment_time_table_cse3d, container, false);
-        //view = timeTableLayout = (FrameLayout) view.findViewById(R.layout.fragment_time_table_cse3d);
-        return  view;
+        // Inflate the layout for this fragment
+        if(!isFirstTimeTable){
+            Intent intent = new Intent(getActivity(), ChooseSectionActivity.class);
+            startActivity(intent);
+            //Toast.makeText(getContext(), , Toast.LENGTH_SHORT).show();
+            getActivity().getSharedPreferences("Login", MODE_PRIVATE).edit().putBoolean("isFirstTimeTable", true).commit();
+            //Toast.makeText(getContext(), Boolean.toString(sp1.getBoolean("isFirstTimeTable", false)), Toast.LENGTH_SHORT).show();
+            getActivity().finish();
+            return null;
+        }
+        //Toast.makeText(getContext(),User.getClassChosen(), Toast.LENGTH_SHORT).show();
+        if(User.getClassChosen() == null){
+            getActivity().finish();
+        }
+
+        switch (User.getClassChosen()){
+
+            case "CSE 3D":
+                return inflater.inflate(R.layout.fragment_time_table_cse3d, container, false);
+
+            case "CSE 3A":
+                return inflater.inflate(R.layout.fragment_time_table_cse3a, container, false);
+
+        }
+        return view;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

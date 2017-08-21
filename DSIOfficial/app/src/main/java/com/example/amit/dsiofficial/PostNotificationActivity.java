@@ -127,7 +127,7 @@ public class PostNotificationActivity extends AppCompatActivity {
                     //progress.setTitle("Uploading");
                     //progress.setMessage("Please wait...");
                     //progress.show();
-                    Toast.makeText(PostNotificationActivity.this, "Uploading", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(PostNotificationActivity.this, "Uploading", Toast.LENGTH_SHORT).show();
 
                     Thread t = new Thread(new Runnable() {
                         @Override
@@ -155,7 +155,7 @@ public class PostNotificationActivity extends AppCompatActivity {
                                     throw new IOException("Error : "+response);
                                 }
 
-                                Toast.makeText(PostNotificationActivity.this, "File uploaded", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(PostNotificationActivity.this, "File uploaded", Toast.LENGTH_SHORT).show();
                                 isUploaded = true;
                                 //progress.dismiss();
 
@@ -263,7 +263,8 @@ public class PostNotificationActivity extends AppCompatActivity {
 
     private String getMimeType(String path) {
 
-        String extension = MimeTypeMap.getFileExtensionFromUrl(path);
+        //String extension = MimeTypeMap.getFileExtensionFromUrl(path);
+        String extension = absoluteFileChosen.substring(absoluteFileChosen.lastIndexOf(".") + 1);
         return MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
     }
 
@@ -354,7 +355,7 @@ public class PostNotificationActivity extends AppCompatActivity {
         try{
 
             responseString = response.getString("messageTitle");
-            Toast.makeText(this, responseString, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, responseString, Toast.LENGTH_SHORT).show();
         }catch (Exception e){e.printStackTrace();}
 
         finish();

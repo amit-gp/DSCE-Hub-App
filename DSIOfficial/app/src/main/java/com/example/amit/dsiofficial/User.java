@@ -14,6 +14,15 @@ public class User {
     private static Boolean isLoggedin = false;
     private static Boolean isAdmin = false;
     private static String year;
+    private static String classChosen;
+
+    public static String getClassChosen() {
+        return classChosen;
+    }
+
+    public static void setClassChosen(String classChosen) {
+        User.classChosen = classChosen;
+    }
 
     public static String getYear() {
         return year;
