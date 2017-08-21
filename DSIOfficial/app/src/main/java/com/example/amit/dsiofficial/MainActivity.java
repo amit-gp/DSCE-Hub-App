@@ -15,6 +15,7 @@ import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,12 +32,22 @@ public class MainActivity extends AppCompatActivity {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             switch (item.getItemId()) {
                 case R.id.navigation_notifications:
-                    Log.i("ALERT !!", "HOME CLICKED");
+                    //Log.i("ALERT !!", "HOME CLICKED");
                     fragmentTransaction.replace(R.id.notificationFrame, new NotificationFragment()).commit();
                     return true;
                 case R.id.navigation_textbooks_resale:
-                    Log.i("ALERT !!", "dash CLICKED");
+                    //Log.i("ALERT !!", "dash CLICKED");
                     fragmentTransaction.replace(R.id.notificationFrame, new BookFragment()).commit();
+                    return true;
+
+                case R.id.navigation_time_table:
+                    //Log.i("ALERT !!", "dash CLICKED");
+                    SharedPreferences sp1= getSharedPreferences("Login", MODE_PRIVATE);
+                    Boolean test = sp1.getBoolean("isFirstTimeTable", false);
+                    if(test){
+                        PopupWindow popupWindow = new PopupWindow(getApplicationContext());
+                    }
+                    fragmentTransaction.replace(R.id.notificationFrame, new TimeTableFragment()).commit();
                     return true;
             }
             return false;
@@ -63,10 +74,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SharedPreferences sp1=this.getSharedPreferences("Login", MODE_PRIVATE);
-
         Boolean test = sp1.getBoolean("isLoggedIn", false);
         Log.i("ALERT !!", test.toString());
-
         if(sp1.getBoolean("isLoggedIn", false)) {
 
             User.setUserName(sp1.getString("Name", null));

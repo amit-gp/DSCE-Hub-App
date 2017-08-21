@@ -10,6 +10,13 @@
         android:letterSpacing="0.3"/>
 
     <item
+        android:id="@+id/navigation_time_table"
+        android:icon="@drawable/ic_time_table"
+        android:title="Time Table"
+        android:letterSpacing="0.3"
+        />
+
+    <item
         android:id="@+id/navigation_textbooks_resale"
         android:icon="@drawable/icons_shopping_cart"
         android:title="Sell Books"
