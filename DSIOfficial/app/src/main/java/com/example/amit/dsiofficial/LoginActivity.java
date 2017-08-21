@@ -39,6 +39,14 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
+        if(isFirstRun || !User.getIsLoggedin())
+        {
+            getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).apply();
+            Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+            startActivity(intent);
+        }
+
 
         loginTextView = (TextView) findViewById(R.id.lin);
         forgotPasswordTextView = (TextView) findViewById(R.id.forgotPassword);
@@ -78,7 +86,7 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View view) {
                 //Implement forgot password
-                Log.i("ALERT !!", "forgot password !");
+                //Log.i("ALERT !!", "forgot password !");
             }
         });
 
@@ -92,7 +100,6 @@ public class LoginActivity extends Activity {
             }
         });
     }
-
 
 
     private void sendAndPrintResponse()
@@ -191,7 +198,7 @@ public class LoginActivity extends Activity {
             User.setPassword(response.getString("Password"));
             User.setPhoneNum(response.getString("ContactNumber"));
             User.setUserName(response.getString("Name"));
-            Toast.makeText(this, response.getString("Email"), Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Logged in as" + response.getString("Email"), Toast.LENGTH_LONG).show();
             User.setIsLoggedin(true);
             User.setIsAdmin(Boolean.parseBoolean(response.getString("Admin")));
             User.setYear(response.getString("year"));

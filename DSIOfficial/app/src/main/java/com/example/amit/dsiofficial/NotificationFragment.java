@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,7 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -61,6 +62,7 @@ public class NotificationFragment extends Fragment {
     String notificationURL = UrlStrings.notificationUrl;
     private OnFragmentInteractionListener mListener;
     SwipeRefreshLayout swipeLayout;
+    private LinearLayout notifLinearLayout;
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
@@ -218,7 +220,11 @@ public class NotificationFragment extends Fragment {
 
     private void addRefreshGui()
     {
-        Toast.makeText(getContext(), "Could not connect to Database.\nSwipe down to refresh.", Toast.LENGTH_LONG).show();
+        notifLinearLayout = (LinearLayout) getView().findViewById(R.id.new_notif_linear_layout);
+        Snackbar snackbar = Snackbar.make(notifLinearLayout, "Could not connect to Database. Swipe down to refresh.", Snackbar.LENGTH_LONG);
+        snackbar.show();
+
+        //Toast.makeText(getContext(), "Could not connect to Database.\nSwipe down to refresh.", Toast.LENGTH_LONG).show();
         swipeLayout.setRefreshing(false);
     }
 
