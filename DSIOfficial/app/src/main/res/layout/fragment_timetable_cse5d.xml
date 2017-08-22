@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.amit.dsiofficial.ChooseSectionActivity">
+    tools:context="com.example.mataa.timetable.MainActivity">
 
     <ScrollView
         android:id="@+id/layout"
@@ -42,7 +42,7 @@
                             android:layout_height="match_parent"
                             android:background="#132173"
                             android:padding="15dp"
-                            android:text="CSE 3A"
+                            android:text="CSE 5D"
                             android:textAlignment="center"
                             android:textColor="#fff"
                             android:textSize="18dp"></TextView>
@@ -223,7 +223,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="CO"
+                            android:text="CN"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -240,7 +240,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="M-III"
+                            android:text="SE"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -269,7 +269,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="LD"
+                            android:text="ME"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -285,7 +285,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="DMS"
+                            android:text="ELECTIVE"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -387,7 +387,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="CO"
+                            android:text="SE"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -403,7 +403,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="DS"
+                            android:text="CN"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -433,7 +433,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="M-III"
+                            android:text="FLAT"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -449,7 +449,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="LD"
+                            android:text="DBMS"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -469,7 +469,6 @@
                             android:textSize="14dp"></TextView>
                     </LinearLayout>
 
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -481,7 +480,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b2"
                             android:padding="8dp"
-                            android:text="DS Lab A1 Batch\nJava Lab A2 Batch"
+                            android:text="DBMS Lab D1 Batch\nN/W Lab D2 Batch"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -520,7 +519,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="OJ"
+                            android:text="SE"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -537,7 +536,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="CO"
+                            android:text="FLAT"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -566,7 +565,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="DS"
+                            android:text="DBMS"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -582,7 +581,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="DMS"
+                            android:text="CN"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -613,7 +612,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="M-III"
+                            android:text="---"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -629,7 +628,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="LD"
+                            android:text="---"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -684,7 +683,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="DS"
+                            android:text="ME"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -700,7 +699,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="M-III"
+                            android:text="DBMS"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -730,7 +729,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="DMS"
+                            android:text="FLAT"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -746,7 +745,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="OJ"
+                            android:text="ELECTIVE"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -770,46 +769,15 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_span="3"
                         android:padding="2dp">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="#faf3b1"
-                            android:padding="17dp"
-                            android:text="---"
-                            android:textAlignment="center"
-                            android:textColor="#000"
-                            android:textSize="14dp"></TextView>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="2dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#faf3b1"
-                            android:padding="17dp"
-                            android:text="---"
-                            android:textAlignment="center"
-                            android:textColor="#000"
-                            android:textSize="14dp"></TextView>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="2dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#faf3b1"
-                            android:padding="17dp"
-                            android:text="---"
+                            android:background="#faf3b2"
+                            android:padding="8dp"
+                            android:text="DBMS Lab D2 Batch\nN/W Lab D3 Batch"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -841,6 +809,23 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_span="4"
+                        android:padding="2dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#b3bae0"
+                            android:padding="8dp"
+                            android:text="DBMS Lab D3 Batch\nN/W Lab D1 Batch"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textSize="14dp"></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:padding="2dp">
 
                         <TextView
@@ -848,25 +833,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="OJ"
-                            android:textAlignment="center"
-                            android:textColor="#000"
-                            android:textSize="14dp"></TextView>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_span="4"
-                        android:padding="2dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#644253b7"
-                            android:padding="8dp"
-                            android:text="DS Lab A2 Batch\nJava Lab A1 Batch"
+                            android:text="ME"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -897,7 +864,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="---"
+                            android:text="DBMS"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -913,7 +880,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="---"
+                            android:text="CN"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -968,7 +935,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="DS"
+                            android:text="ME"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -984,7 +951,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="OJ"
+                            android:text="ELECTIVE"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -1182,7 +1149,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" M-III : Mathematics-III"
+                            android:text=" ME : Managment and Entrepreneurship"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>
@@ -1199,7 +1166,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" "
+                            android:text=" Mrs. Muquitha Almas"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>
@@ -1223,7 +1190,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" DS : Data Structures with 'C'"
+                            android:text=" CN : Computer Networks"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>
@@ -1240,7 +1207,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" Prof. Mohd. Tahuddin"
+                            android:text=" Dr. Venkatesan S"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>
@@ -1264,7 +1231,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" LD : Logic Design"
+                            android:text=" DBMS : Database Managment Systems"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>
@@ -1281,7 +1248,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" Mrs. Prameetha Pai"
+                            android:text=" Mr. Arun Kumar N"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>
@@ -1305,7 +1272,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" OJ : OOPs with Java"
+                            android:text=" SE : Software Engineering"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>
@@ -1322,7 +1289,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" Ms. Asnika S"
+                            android:text=" Mrs. Aupama Girish"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>
@@ -1346,7 +1313,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" CO : Computer Organisation'"
+                            android:text=" FLAT : Automata Theory and Formal Lang.'"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>
@@ -1363,7 +1330,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" Mrs. Poornima AB"
+                            android:text=" Mrs. Bhanupryia MP"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>
@@ -1387,7 +1354,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" DMS : Discrete Mathematical Structures"
+                            android:text=" ELECTIVE : Artificial Intelligence and Agent Technology /Andrios developer Fundamentals Course"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>
@@ -1404,7 +1371,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" Mrs. Swetha MD"
+                            android:text=" Mrs. Vindhya M/\n Mr. Anil Sagar T"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>

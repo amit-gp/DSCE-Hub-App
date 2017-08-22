@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -129,10 +130,10 @@ public class TimeTableFragment extends Fragment {
             getActivity().finish();
             return null;
         }
-        //Toast.makeText(getContext(),User.getClassChosen(), Toast.LENGTH_SHORT).show();
         if(User.getClassChosen() == null){
             getActivity().finish();
         }
+        Toast.makeText(getContext(),"Tip: Choose your table from the drop-down above.", Toast.LENGTH_SHORT).show();
 
         switch (User.getClassChosen()){
 
@@ -142,6 +143,23 @@ public class TimeTableFragment extends Fragment {
             case "CSE 3A":
                 return inflater.inflate(R.layout.fragment_time_table_cse3a, container, false);
 
+            case "CSE 3B":
+                return inflater.inflate(R.layout.fragment_timetable_cse3b, container, false);
+
+            case "CSE 3C":
+                return inflater.inflate(R.layout.fragment_timetable_cse3c, container, false);//----------------------------CHANGE !!!!
+
+            case "CSE 5A":
+                return inflater.inflate(R.layout.fragment_timetable_cse5a, container, false);
+
+            case "CSE 5B":
+                return inflater.inflate(R.layout.fragment_timetable_cse5b, container, false);
+
+            case "CSE 5C":
+                return inflater.inflate(R.layout.fragment_timetable_cse5c, container, false);
+
+            case "CSE 5D":
+                return inflater.inflate(R.layout.fragment_timetable_cse5d, container, false);
         }
         return view;
 

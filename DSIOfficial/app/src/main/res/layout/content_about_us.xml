@@ -133,7 +133,7 @@
                 android:textColor="#000"
                 android:textSize="12dp"
                 android:letterSpacing="0.2"
-                android:text="Designer: " />
+                android:text="Lead Designer: " />
 
             <TextView
                 android:layout_width="wrap_content"

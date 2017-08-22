@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.amit.dsiofficial.ChooseSectionActivity">
+    tools:context="com.example.mataa.timetable.MainActivity">
 
     <ScrollView
         android:id="@+id/layout"
@@ -42,7 +42,7 @@
                             android:layout_height="match_parent"
                             android:background="#132173"
                             android:padding="15dp"
-                            android:text="CSE 3A"
+                            android:text="CSE 3C"
                             android:textAlignment="center"
                             android:textColor="#fff"
                             android:textSize="18dp"></TextView>
@@ -223,7 +223,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="CO"
+                            android:text="LD"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -236,11 +236,12 @@
                         android:padding="2dp">
 
                         <TextView
+                            android:id="@+id/textView2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="M-III"
+                            android:text="DS"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -269,7 +270,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="LD"
+                            android:text="OJ"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -285,7 +286,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="DMS"
+                            android:text="M-III"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -387,7 +388,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="CO"
+                            android:text="DS"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -403,7 +404,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="DS"
+                            android:text="DMS"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -433,7 +434,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="M-III"
+                            android:text="CO"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -449,7 +450,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="LD"
+                            android:text="OJ"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -473,15 +474,46 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_span="3"
                         android:padding="2dp">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="#faf3b2"
-                            android:padding="8dp"
-                            android:text="DS Lab A1 Batch\nJava Lab A2 Batch"
+                            android:background="#faf3b1"
+                            android:padding="17dp"
+                            android:text="---"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textSize="14dp"></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="2dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#faf3b1"
+                            android:padding="17dp"
+                            android:text="---"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textSize="14dp"></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="2dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#faf3b1"
+                            android:padding="17dp"
+                            android:text="---"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -530,63 +562,20 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_span="4"
                         android:padding="2dp">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="#644253b7"
-                            android:padding="17dp"
-                            android:text="CO"
+                            android:background="#b3bae0"
+                            android:padding="8dp"
+                            android:text="DS Lab C1 Batch\nJava Lab C2 Batch"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="1dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#4152b6"
-                            android:padding="0dp"
-                            android:text=""
-                            android:textSize="26dp"></TextView>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="2dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#644253b7"
-                            android:padding="17dp"
-                            android:text="DS"
-                            android:textAlignment="center"
-                            android:textColor="#000"
-                            android:textSize="14dp"></TextView>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="2dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#644253b7"
-                            android:padding="17dp"
-                            android:text="DMS"
-                            android:textAlignment="center"
-                            android:textColor="#000"
-                            android:textSize="14dp"></TextView>
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -629,7 +618,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="LD"
+                            android:text="DMS"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -684,7 +673,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="DS"
+                            android:text="M-III"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -700,7 +689,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="M-III"
+                            android:text="DMS"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -730,7 +719,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="DMS"
+                            android:text="CO"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -746,7 +735,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="OJ"
+                            android:text="DS"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -848,7 +837,7 @@
                             android:layout_height="match_parent"
                             android:background="#644253b7"
                             android:padding="17dp"
-                            android:text="OJ"
+                            android:text="CO"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -858,15 +847,59 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_span="4"
                         android:padding="2dp">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="#644253b7"
-                            android:padding="8dp"
-                            android:text="DS Lab A2 Batch\nJava Lab A1 Batch"
+                            android:padding="17dp"
+                            android:text="M-III"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textSize="14dp"></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="1dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#4152b6"
+                            android:padding="0dp"
+                            android:text=""
+                            android:textSize="26dp"></TextView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="2dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#644253b7"
+                            android:padding="17dp"
+                            android:text="OJ"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textSize="14dp"></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="2dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#644253b7"
+                            android:padding="17dp"
+                            android:text="LD"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -890,50 +923,20 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_span="3"
                         android:padding="2dp">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="#644253b7"
-                            android:padding="17dp"
-                            android:text="---"
+                            android:background="#b3bae0"
+                            android:padding="8dp"
+                            android:text="DS Lab C2 Batch\nJava Lab C1 Batch"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="2dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#644253b7"
-                            android:padding="17dp"
-                            android:text="---"
-                            android:textAlignment="center"
-                            android:textColor="#000"
-                            android:textSize="14dp"></TextView>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="2dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#644253b7"
-                            android:padding="17dp"
-                            android:text="---"
-                            android:textAlignment="center"
-                            android:textColor="#000"
-                            android:textSize="14dp"></TextView>
-                    </LinearLayout>
 
                 </TableRow>
 
@@ -984,7 +987,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="17dp"
-                            android:text="OJ"
+                            android:text="LD"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14dp"></TextView>
@@ -1240,7 +1243,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" Prof. Mohd. Tahuddin"
+                            android:text=" Mr. Harish Kumar N"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>
@@ -1281,7 +1284,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" Mrs. Prameetha Pai"
+                            android:text=" Mrs. Sonal N Kharecha"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>
@@ -1322,7 +1325,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" Ms. Asnika S"
+                            android:text=" Mrs. Monika P"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>
@@ -1363,7 +1366,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" Mrs. Poornima AB"
+                            android:text=" Dr. Shubha Bhat"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>
@@ -1404,7 +1407,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" Mrs. Swetha MD"
+                            android:text=" Mrs. Asha Thomas"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>
