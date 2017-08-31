@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.amit.dsiofficial.ChooseSectionActivity">
+    tools:context="com.studios.amit.dsiofficial.ChooseSectionActivity">
 
     <ScrollView
         android:id="@+id/layout"
@@ -1240,7 +1240,7 @@
                             android:layout_height="match_parent"
                             android:background="#faf3b1"
                             android:padding="7dp"
-                            android:text=" Prof. Mohd. Tahuddin"
+                            android:text=" Prof. Mohd. Tajuddin"
                             android:layout_gravity="left"
                             android:textColor="#000"
                             android:textSize="13dp"></TextView>

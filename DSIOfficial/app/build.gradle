@@ -1,14 +1,22 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'dsceAppKey'
+            keyPassword 'ataaknowsthepassword'
+            storeFile file('C:/Users/Amit/Documents/dsceHubKeyStore.jks')
+            storePassword 'ataaknowsthepassword'
+        }
+    }
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
     defaultConfig {
-        applicationId "com.example.amit.dsiofficial"
+        applicationId "com.studios.amit.dsiofficial"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.5.4"
+        versionCode 2
+        versionName "1.5.8"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -21,19 +29,15 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     repositories {
         maven {
             url "http://dl.bintray.com/lukaville/maven"
         }
     }
-
-
-
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
     compile 'com.android.support:cardview-v7:26.0.0-alpha1'
     compile 'com.android.support:design:26.0.0-alpha1'

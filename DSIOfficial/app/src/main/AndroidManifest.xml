@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.amit.dsiofficial">
+    package="com.studios.amit.dsiofficial">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -19,12 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.studios.amit.dsiofficial.MainActivity"
             android:screenOrientation="portrait" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.example.amit.dsiofficial"
+            android:authorities="com.studios.amit.dsiofficial"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -33,33 +33,33 @@
         </provider>
 
         <activity
-            android:name=".LoginActivity"
+            android:name="com.studios.amit.dsiofficial.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SignupActivity"
+            android:name="com.studios.amit.dsiofficial.SignupActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".NewBookActivity"
+            android:name="com.studios.amit.dsiofficial.NewBookActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".BookInfoActivity"
+            android:name="com.studios.amit.dsiofficial.BookInfoActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PostNotificationActivity"
+            android:name="com.studios.amit.dsiofficial.PostNotificationActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MyProfileActivity"
+            android:name="com.studios.amit.dsiofficial.MyProfileActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".NotificationInfoActivity"
+            android:name="com.studios.amit.dsiofficial.NotificationInfoActivity"
             android:screenOrientation="portrait" />
 
         <service
-            android:name=".ServerHeartbeatService"
+            android:name="com.studios.amit.dsiofficial.ServerHeartbeatService"
             android:exported="false"
             android:process=":remote" />
 
-        <activity android:name=".SplashScreen">
+        <activity android:name="com.studios.amit.dsiofficial.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -67,11 +67,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AboutUsActivity"
+            android:name="com.studios.amit.dsiofficial.AboutUsActivity"
             android:label="@string/title_activity_about_us"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".ChooseSectionActivity"></activity>
+        <activity android:name="com.studios.amit.dsiofficial.ChooseSectionActivity"></activity>
     </application>
 
 </manifest>
